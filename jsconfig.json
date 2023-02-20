@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "AdminTemplate/*": ["./src/pages/AdminTemplate/*"],
+      "utils/*": ["./src/utils/*"]
+    }
+  }
+}

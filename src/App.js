@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import renderRoutes from "./routes";
+import { Suspense } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
+const antIcon = (
+  <LoadingOutlined
+    style={{
+      fontSize: 100,
+    }}
+    spin
+  />
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense
+      fallback={
+        <Spin
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          indicator={antIcon}
+          key="spin"
+        />
+      }
+    >
+      <BrowserRouter>
+        <Routes>{renderRoutes()}</Routes>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
