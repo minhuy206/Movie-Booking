@@ -1,3 +1,4 @@
-export const USERS_REQUEST = "@moviesReducer/USERS_REQUEST";
-export const USERS_SUCCESS = "@moviesReducer/USERS_SUCCESS";
-export const USERS_FAIL = "@moviesReducer/USERS_FAIL";
+export const USERS_SUCCESS = "@userReducer/USERS_SUCCESS";
+export const USERS_FAIL = "@userReducer/USERS_FAIL";
+export const USER_SUCCESS = "@userReducer/USER_SUCCESS";
+export const USER_FAIL = "@userReducer/USER_SUCCESS";

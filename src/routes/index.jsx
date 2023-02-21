@@ -9,6 +9,12 @@ const routes = [
     }),
     nested: [
       {
+        path: "",
+        element: lazy(() => {
+          return import("../pages/AdminTemplate/user-management");
+        }),
+      },
+      {
         path: "users",
         element: lazy(() => {
           return import("../pages/AdminTemplate/user-management");
@@ -17,7 +23,13 @@ const routes = [
       {
         path: "users/addnew",
         element: lazy(() => {
-          return import("../pages/AdminTemplate/user-management/add-user");
+          return import("../pages/AdminTemplate/user-management/add");
+        }),
+      },
+      {
+        path: "users/edit/:username",
+        element: lazy(() => {
+          return import("../pages/AdminTemplate/user-management/edit");
         }),
       },
       {
@@ -29,7 +41,19 @@ const routes = [
       {
         path: "movies/addnew",
         element: lazy(() => {
-          return import("../pages/AdminTemplate/movies-management/add-movie");
+          return import("../pages/AdminTemplate/movies-management/add");
+        }),
+      },
+      {
+        path: "movies/edit/:id",
+        element: lazy(() => {
+          return import("../pages/AdminTemplate/movies-management/edit");
+        }),
+      },
+      {
+        path: "movies/showtime/:id",
+        element: lazy(() => {
+          return import("../pages/AdminTemplate/movies-management/showtime");
         }),
       },
     ],

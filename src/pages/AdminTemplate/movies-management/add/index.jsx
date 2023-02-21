@@ -1,6 +1,6 @@
 import { DatePicker, Form, Input, InputNumber, Switch, Alert } from "antd";
 import React, { useRef, useState } from "react";
-import { object, string, number, Schema } from "yup";
+import { object, string, number } from "yup";
 import { useFormik } from "formik";
 import moment from "moment";
 import api from "utils/apiUtils";
@@ -50,10 +50,10 @@ export default function AddMovie() {
       api
         .post("QuanLyPhim/ThemPhimUploadHinh", formData)
         .then((result) => {
-          console.log(result);
+          alert(result.data.message);
         })
         .catch((error) => {
-          console.log(error);
+          alert(error.response.data.content);
         });
     },
   });
@@ -160,11 +160,7 @@ export default function AddMovie() {
           <Switch onChange={handleChangeSwitch("hot")} />
         </Form.Item>
         <Form.Item label="Số sao">
-          <InputNumber
-            min={1}
-            max={10}
-            onChange={handleChangeInputNumber("danhGia")}
-          />
+          <InputNumber min={1} max={10} onChange={handleChangeInputNumber()} />
           {formik.errors.danhGia && formik.touched.danhGia && (
             <Alert type="error" message={formik.errors.danhGia} banner />
           )}

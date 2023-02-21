@@ -2,7 +2,7 @@ import {
   UserOutlined,
   VideoCameraAddOutlined,
   PoweroffOutlined,
-  CalendarOutlined,
+  UserAddOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Avatar } from "antd";
@@ -24,55 +24,58 @@ const AdminTemplate = () => {
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-        theme="light"
+        onBreakpoint={(broken) => {}}
+        onCollapse={(collapsed, type) => {}}
+        theme="dark"
         style={{
+          margin: "auto 20px auto 20px",
           overflow: "auto",
-          height: "100vh",
+          height: "95vh",
           position: "fixed",
           left: 0,
           top: 0,
           bottom: 0,
+          borderRadius: "20px",
         }}
-        key="sider"
       >
         <div
           style={{
             height: 32,
             margin: 24,
-            background: "rgba(255, 255, 255, 0.2)",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-evenly",
           }}
         >
           <Avatar size={40}>{username.charAt(0)}</Avatar>
-          <span>{username}</span>
+          <span style={{ color: "#fff" }}>{username}</span>
         </div>
-        <Menu theme="light" mode="inline" defaultSelectedKeys={["1"]}>
-          <Menu.Item key="users" icon={<UserOutlined />}>
-            <NavLink to="users">User</NavLink>
-          </Menu.Item>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <SubMenu
             key="sub1"
             icon={<VideoCameraOutlined />}
-            title="Movies management"
+            title="Quản lý người dùng"
           >
-            <Menu.Item key="movies" icon={<VideoCameraOutlined />}>
-              <NavLink to="movies">Movies</NavLink>
+            <Menu.Item key="users" icon={<UserOutlined />}>
+              <NavLink to="users">Danh sách người dùng</NavLink>
             </Menu.Item>
-            <Menu.Item key="addnew" icon={<VideoCameraAddOutlined />}>
-              <NavLink to="movies/addnew">Add new film</NavLink>
+            <Menu.Item key="users/addnew" icon={<UserAddOutlined />}>
+              <NavLink to="users/addnew">Thêm người dùng</NavLink>
             </Menu.Item>
           </SubMenu>
-          <Menu.Item key="showtime" icon={<CalendarOutlined />}>
-            <NavLink>Showtime</NavLink>
-          </Menu.Item>
+          <SubMenu
+            key="sub2"
+            icon={<VideoCameraOutlined />}
+            title="Quản lý phim"
+          >
+            <Menu.Item key="movies" icon={<VideoCameraOutlined />}>
+              <NavLink to="movies">Danh sách phim</NavLink>
+            </Menu.Item>
+            <Menu.Item key="addnew" icon={<VideoCameraAddOutlined />}>
+              <NavLink to="movies/addnew">Thêm phim</NavLink>
+            </Menu.Item>
+          </SubMenu>
+
           <Menu.Item key="logout" icon={<PoweroffOutlined />}>
             <NavLink
               onClick={() => {
@@ -85,18 +88,18 @@ const AdminTemplate = () => {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
+      <Layout className="site-layout" style={{ marginLeft: 240 }}>
         <Content
           style={{
-            margin: "24px 16px 0",
+            marginTop: "24px",
             overflow: "initial",
           }}
         >
           <div
             style={{
               padding: 24,
-              minheight: "90vh",
-
+              minHeight: "90vh",
+              borderRadius: "20px",
               backgroundColor: "#fff",
             }}
           >

@@ -1,5 +1,4 @@
 import { Button, Checkbox, Form, Input, Alert, Space } from "antd";
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Navigate } from "react-router-dom";
 import { login } from "./duck/action";
@@ -15,9 +14,6 @@ const Login = () => {
       matKhau: values.matKhau,
     };
     dispatch(login(user, navigate));
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   const renderNoti = () => {
@@ -60,8 +56,6 @@ const Login = () => {
           remember: true,
         }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
       >
         <Form.Item
           label="Username"

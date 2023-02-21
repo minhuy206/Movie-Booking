@@ -8,12 +8,6 @@ const initialState = {
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.LOGIN_REQUEST: {
-      state.loading = true;
-      state.data = null;
-      state.error = null;
-      return { ...state };
-    }
     case types.LOGIN_SUCCESS: {
       state.loading = false;
       state.data = action.data;
@@ -23,7 +17,6 @@ const loginReducer = (state = initialState, action) => {
     case types.LOGIN_FAIL: {
       state.loading = false;
       state.data = null;
-      state.error = action.error;
       return { ...state };
     }
 

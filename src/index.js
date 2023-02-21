@@ -6,11 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store";
 
-// Bootstrap
-import "jquery/dist/jquery.min.js";
-import "popper.js/dist/umd/popper.min.js";
-import "bootstrap/dist/js/bootstrap.min.js";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>

@@ -3,7 +3,6 @@ import api from "utils/apiUtils";
 
 export const login = (user, navigate) => {
   return (dispatch) => {
-    dispatch(request());
     api
       .post("QuanLyNguoiDung/DangNhap", user)
       .then((result) => {
@@ -29,9 +28,6 @@ export const login = (user, navigate) => {
   };
 };
 
-const request = () => {
-  return { type: types.LOGIN_REQUEST };
-};
 const success = (data) => {
   return { type: types.LOGIN_SUCCESS, data: data };
 };

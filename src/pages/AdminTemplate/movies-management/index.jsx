@@ -4,14 +4,8 @@ import {
   DeleteOutlined,
   CalendarOutlined,
 } from "@ant-design/icons";
-import React, {
-  Fragment,
-  useEffect,
-  useState,
-  useMemo,
-  useCallback,
-} from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { Fragment, useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "./duck/action";
 import api from "utils/apiUtils";
@@ -19,25 +13,28 @@ const { Search } = Input;
 
 function Movies() {
   const dispatch = useDispatch();
-  const props = useSelector((state) => state.moviesReducer);
+  const props = useSelector((state) => state.movieReducer);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchMovies());
   }, []);
-  const { data } = props;
+  const { movies } = props;
 
-  const searchedData = data?.filter(
+  const searchedMovies = movies?.filter(
     (movie) => movie.tenPhim.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
   );
   const deleteMovie = (id) => {
     api
       .delete(`QuanLyPhim/XP?MaPhim=${id}`)
       .then((result) => {
+        alert(result.data.message);
         dispatch(fetchMovies());
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        alert(error.response.data.content);
+      });
   };
 
   const columns = [
@@ -88,16 +85,16 @@ function Movies() {
       render: (_, movie) => {
         return (
           <Fragment>
-            <Button type="link" key="editMovieBtn">
-              <NavLink
-                className="text-xl"
-                key="editMovie"
-                to={`edit/${movie.maPhim}`}
-              >
-                <EditOutlined />
-              </NavLink>
-            </Button>
+            <Button
+              type="link"
+              key="editMovieBtn"
+              onClick={() => {
+                navigate(`edit/${movie.maPhim}`);
+              }}
+              icon={<EditOutlined />}
+            ></Button>
             <ConfigProvider
+              key="buttonConfigProvider"
               theme={{
                 token: {
                   colorLink: "#00b96b",
@@ -105,25 +102,25 @@ function Movies() {
                 },
               }}
             >
-              <Button type="link" key="addShowtimeBtn">
-                <NavLink
-                  className="text-xl"
-                  key="addShowtime"
-                  to={`showtime/${movie.maPhim}`}
-                >
-                  <CalendarOutlined />
-                </NavLink>
-              </Button>
+              <Button
+                type="link"
+                key="addShowtimeBtn"
+                onClick={() => {
+                  navigate(`showtime/${movie.maPhim}`);
+                }}
+                icon={<CalendarOutlined />}
+              ></Button>
             </ConfigProvider>
-            <Button type="link" danger key="deleteMovieBtn">
-              <NavLink
-                className="text-xl"
-                key="deleteMovie"
-                onClick={() => deleteMovie(movie.maPhim)}
-              >
-                <DeleteOutlined />
-              </NavLink>
-            </Button>
+            <Button
+              type="link"
+              danger
+              key="deleteMovieBtn"
+              icon={<DeleteOutlined />}
+              onClick={() => {
+                console.log(123);
+                deleteMovie(movie.maPhim);
+              }}
+            ></Button>
           </Fragment>
         );
       },
@@ -154,7 +151,7 @@ function Movies() {
       />
       <Table
         columns={columnsMemo}
-        dataSource={keyword ? searchedData : data}
+        dataSource={keyword ? searchedMovies : movies}
         pagination={{
           defaultPageSize: 5,
         }}

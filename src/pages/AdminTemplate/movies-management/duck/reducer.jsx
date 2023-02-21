@@ -1,33 +1,27 @@
 import * as types from "./types";
 
 const initialState = {
-  loading: false,
-  data: null,
+  movies: null,
   error: null,
-  keyword: null,
 };
 
-const moviesReducer = (state = initialState, action) => {
+const movieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.MOVIES_REQUEST:
-      state.data = null;
-      state.error = null;
-      state.loading = true;
-      return { ...state };
     case types.MOVIES_SUCCESS:
-      state.data = action.data;
-      state.error = null;
-      state.loading = false;
+      state.movies = action.data;
       return { ...state };
     case types.MOVIES_FAIL:
-      state.data = null;
       state.error = action.error;
-      state.loading = false;
       return { ...state };
-
+    case types.MOVIE_SUCCESS:
+      state.movie = action.data;
+      return { ...state };
+    case types.MOVIE_FAIL:
+      state.error = action.error;
+      return { ...state };
     default:
       return { ...state };
   }
 };
 
-export default moviesReducer;
+export default movieReducer;

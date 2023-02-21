@@ -1,23 +1,23 @@
 import { Table, Tag, Input, Space, Button } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import React, { Fragment, useEffect, useState, useMemo } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "./duck/action";
 import api from "utils/apiUtils";
 const { Search } = Input;
 
-function Movies() {
+function Users() {
   const dispatch = useDispatch();
-  const props = useSelector((state) => state.usersReducer);
+  const props = useSelector((state) => state.userReducer);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+  const { users } = props;
 
+  // call api lấy danh sách người dùng
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
-
-  const { data: users } = props;
 
   const searchedUsers = users?.filter(
     (user) => user.hoTen.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
@@ -27,6 +27,7 @@ function Movies() {
     api
       .delete(`QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`)
       .then((result) => {
+        alert(result.data.message);
         dispatch(fetchUsers());
       })
       .catch((error) => console.log(error));
@@ -60,7 +61,6 @@ function Movies() {
       dataIndex: "soDT",
       key: "soDT",
     },
-
     {
       title: "Loại người dùng",
       key: "maLoaiNguoiDung",
@@ -85,20 +85,25 @@ function Movies() {
       render: (_, user) => {
         return (
           <Fragment>
-            <Button key="editUserBtn" type="link">
-              <NavLink className="text-xl" key="editUser">
-                <EditOutlined style={{ color: "blue" }} />
-              </NavLink>
-            </Button>
-            <Button key="deleteUserBtn" type="link" danger>
-              <NavLink
-                className="text-xl"
-                key="deleteUser"
-                onClick={() => deleteUsers(user.taiKhoan)}
-              >
-                <DeleteOutlined style={{ color: "red" }} />
-              </NavLink>
-            </Button>
+            <Button
+              key="editUserBtn"
+              type="link"
+              icon={
+                <EditOutlined
+                  style={{ color: "blue" }}
+                  onClick={() => {
+                    navigate(`edit/${user.taiKhoan}`);
+                  }}
+                />
+              }
+            ></Button>
+            <Button
+              key="deleteUserBtn"
+              type="link"
+              danger
+              onClick={() => deleteUsers(user.taiKhoan)}
+              icon={<DeleteOutlined style={{ color: "red" }} />}
+            ></Button>
           </Fragment>
         );
       },
@@ -137,4 +142,4 @@ function Movies() {
     </>
   );
 }
-export default Movies;
+export default Users;
