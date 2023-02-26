@@ -16,11 +16,11 @@ function Movies() {
   const props = useSelector((state) => state.movieReducer);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+  const { movies } = props;
 
   useEffect(() => {
     dispatch(fetchMovies());
-  }, []);
-  const { movies } = props;
+  }, [movies]);
 
   const searchedMovies = movies?.filter(
     (movie) => movie.tenPhim.toLowerCase().indexOf(keyword.toLowerCase()) !== -1

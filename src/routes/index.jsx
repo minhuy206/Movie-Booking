@@ -3,6 +3,62 @@ import { lazy } from "react";
 
 const routes = [
   {
+    path: "",
+    element: lazy(() => {
+      return import("../pages/HomeTemplate");
+    }),
+    nested: [
+      {
+        path: "",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/Home");
+        }),
+      },
+      {
+        path: "home",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/Home");
+        }),
+      },
+      //     {
+      //       path: "users/addnew",
+      //       element: lazy(() => {
+      //         return import("../pages/AdminTemplate/user-management/add");
+      //       }),
+      //     },
+      //     {
+      //       path: "users/edit/:username",
+      //       element: lazy(() => {
+      //         return import("../pages/AdminTemplate/user-management/edit");
+      //       }),
+      //     },
+      //     {
+      //       path: "movies",
+      //       element: lazy(() => {
+      //         return import("../pages/AdminTemplate/movies-management");
+      //       }),
+      //     },
+      //     {
+      //       path: "movies/addnew",
+      //       element: lazy(() => {
+      //         return import("../pages/AdminTemplate/movies-management/add");
+      //       }),
+      //     },
+      //     {
+      //       path: "movies/edit/:id",
+      //       element: lazy(() => {
+      //         return import("../pages/AdminTemplate/movies-management/edit");
+      //       }),
+      //     },
+      //     {
+      //       path: "movies/showtime/:id",
+      //       element: lazy(() => {
+      //         return import("../pages/AdminTemplate/movies-management/showtime");
+      //       }),
+      //     },
+    ],
+  },
+  {
     path: "admin",
     element: lazy(() => {
       return import("../pages/AdminTemplate");

@@ -54,8 +54,8 @@ export default function EditMovie() {
 
       danhGia: number()
         .required("Vui lòng nhập số sao")
-        .min(1, "Vui lòng nhập từ 1-5 ")
-        .max(5, "Vui lòng nhập từ 1-5 "),
+        .min(0, "Vui lòng nhập từ 0-10 ")
+        .max(10, "Vui lòng nhập từ 0-10 "),
     }),
 
     onSubmit: (values) => {
@@ -87,18 +87,27 @@ export default function EditMovie() {
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   };
 
-  const handleChangeSwitch = (name) => {
+  const handleChangeDangChieuSwitch = (name) => {
     return (value) => {
       // Thay đổi trạng thái switch
-      if (name === "dangChieu") {
-        sapChieuSwich.current.click();
-      } else if (name === "sapChieu") {
-        dangChieuSwich.current.click();
-      }
+      sapChieuSwich.current.click();
       formik.setFieldValue([name], value);
     };
   };
 
+  const handleChangeSapChieuSwitch = (name) => {
+    return (value) => {
+      // Thay đổi trạng thái switch
+      dangChieuSwich.current.click();
+      formik.setFieldValue([name], value);
+    };
+  };
+
+  const handleChangeSwitch = (name) => {
+    return (value) => {
+      formik.setFieldValue([name], value);
+    };
+  };
   const handleChangeInputNumber = () => {
     return (value) => {
       console.log(value);
@@ -184,14 +193,14 @@ export default function EditMovie() {
           <Switch
             checked={formik.values.dangChieu}
             ref={dangChieuSwich}
-            onChange={handleChangeSwitch("dangChieu")}
+            onChange={handleChangeDangChieuSwitch("dangChieu")}
           />
         </Form.Item>
         <Form.Item label="Sắp chiếu" valuePropName="checked">
           <Switch
             checked={formik.values.sapChieu}
             ref={sapChieuSwich}
-            onChange={handleChangeSwitch("sapChieu")}
+            onChange={handleChangeSapChieuSwitch("sapChieu")}
           />
         </Form.Item>
         <Form.Item label="Hot" valuePropName="checked">
@@ -202,9 +211,9 @@ export default function EditMovie() {
         </Form.Item>
         <Form.Item label="Số sao">
           <InputNumber
+            min={0}
+            max={10}
             value={formik.values.danhGia}
-            min={1}
-            max={5}
             onChange={handleChangeInputNumber()}
           />
           {formik.errors.danhGia && formik.touched.danhGia && (

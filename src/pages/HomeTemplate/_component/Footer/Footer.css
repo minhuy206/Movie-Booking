@@ -1,0 +1,13 @@
+.layout {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 10% 45% 45%;
+  font-family: "Viga", sans-serif;
+}
+
+.logo {
+  grid-row: 1/4;
+}
+
+.title {
+  grid-column: 2/5;
+}

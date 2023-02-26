@@ -17,7 +17,7 @@ function Users() {
   // call api lấy danh sách người dùng
   useEffect(() => {
     dispatch(fetchUsers());
-  }, []);
+  }, [users]);
 
   const searchedUsers = users?.filter(
     (user) => user.hoTen.toLowerCase().indexOf(keyword.toLowerCase()) !== -1

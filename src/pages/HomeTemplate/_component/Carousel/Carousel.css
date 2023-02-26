@@ -1,0 +1,145 @@
+/* sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px", */
+
+.carousel {
+  font-family: "Oxygen", sans-serif;
+}
+
+@media screen and (max-width: 640px) {
+  .carouselContent {
+    bottom: 3%;
+    height: 15vh;
+  }
+  .infoIcon {
+    border: 1px solid #c4c4c4;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .carouselContent {
+    bottom: 3%;
+    height: 15vh;
+  }
+  .slick-prev {
+    display: none;
+  }
+
+  .slick-next {
+    display: none;
+  }
+
+  .slick-dots li {
+    display: none;
+  }
+
+  ul .slick-active {
+    display: none;
+  }
+
+  .infoIcon {
+    border: 1px solid #c4c4c4;
+    width: 20px;
+    height: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .slick-prev {
+    z-index: 100;
+    width: 45px;
+    height: 72px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #7f66de80;
+    color: white;
+    left: 5% !important;
+    padding: 25px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .slick-prev:hover {
+    background-color: #674cd780;
+    color: white;
+  }
+  .slick-prev:active {
+    background-color: #5c46d080;
+    color: white;
+  }
+
+  .slick-prev::before {
+    content: "";
+  }
+
+  .slick-next {
+    z-index: 100;
+    right: 5% !important;
+    width: 45px;
+    height: 72px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #7f66de80;
+    color: white;
+    padding: 25px 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .slick-next:hover {
+    background-color: #674cd780;
+    color: white;
+  }
+  .slick-next:active {
+    background-color: #5c46d080;
+    color: white;
+  }
+
+  .slick-next::before {
+    content: "";
+  }
+
+  .slick-dots li {
+    background-color: #7f66de80;
+    border-radius: 50%;
+    border: 2px solid transparent;
+  }
+
+  ul .slick-active {
+    background-color: white !important;
+    border-radius: 50%;
+    border: 3px solid #c8235d !important;
+  }
+
+  .slick-dots li button:before {
+    content: "";
+  }
+  .slick-dots {
+    transform: translate(100%, 0);
+    width: auto;
+    right: 20%;
+    bottom: 8%;
+    display: block;
+    display: inline-block;
+  }
+  .carouselBtn {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .desc {
+    bottom: 8%;
+  }
+}

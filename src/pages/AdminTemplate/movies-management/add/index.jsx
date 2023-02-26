@@ -34,8 +34,8 @@ export default function AddMovie() {
       ngayKhoiChieu: string().required("Vui lòng chọn ngày khởi chiếu"),
       danhGia: number()
         .required("Vui lòng nhập số sao")
-        .min(1, "Vui lòng nhập từ 1-5 ")
-        .max(5, "Vui lòng nhập từ 1-5 "),
+        .min(0, "Vui lòng nhập từ 0-10 ")
+        .max(10, "Vui lòng nhập từ 0-10 "),
       hinhAnh: string().required("Vui lòng nhập file hình ảnh"),
     }),
     onSubmit: (values) => {
@@ -63,14 +63,24 @@ export default function AddMovie() {
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   };
 
-  const handleChangeSwitch = (name) => {
+  const handleChangeDangChieuSwitch = (name) => {
     return (value) => {
       // Thay đổi trạng thái switch
-      if (name === "dangChieu") {
-        sapChieuSwich.current.click();
-      } else {
-        dangChieuSwich.current.click();
-      }
+      sapChieuSwich.current.click();
+      formik.setFieldValue([name], value);
+    };
+  };
+
+  const handleChangeSapChieuSwitch = (name) => {
+    return (value) => {
+      // Thay đổi trạng thái switch
+      dangChieuSwich.current.click();
+      formik.setFieldValue([name], value);
+    };
+  };
+
+  const handleChangeSwitch = (name) => {
+    return (value) => {
       formik.setFieldValue([name], value);
     };
   };
@@ -83,8 +93,6 @@ export default function AddMovie() {
 
   const handleChangeFile = (e) => {
     const file = e.target.files[0];
-
-    // set value
     formik.setFieldValue("hinhAnh", file);
 
     // tạo đối tượng để đọc file và in hình ảnh ra giao diện
@@ -147,20 +155,20 @@ export default function AddMovie() {
           <Switch
             defaultChecked={true}
             ref={dangChieuSwich}
-            onChange={handleChangeSwitch("dangChieu")}
+            onChange={handleChangeDangChieuSwitch("dangChieu")}
           />
         </Form.Item>
         <Form.Item label="Sắp chiếu" valuePropName="checked">
           <Switch
             ref={sapChieuSwich}
-            onChange={handleChangeSwitch("sapChieu")}
+            onChange={handleChangeSapChieuSwitch("sapChieu")}
           />
         </Form.Item>
         <Form.Item label="Hot" valuePropName="checked">
           <Switch onChange={handleChangeSwitch("hot")} />
         </Form.Item>
         <Form.Item label="Số sao">
-          <InputNumber min={1} max={10} onChange={handleChangeInputNumber()} />
+          <InputNumber min={0} max={10} onChange={handleChangeInputNumber()} />
           {formik.errors.danhGia && formik.touched.danhGia && (
             <Alert type="error" message={formik.errors.danhGia} banner />
           )}

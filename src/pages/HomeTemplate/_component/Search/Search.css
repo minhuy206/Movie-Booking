@@ -1,0 +1,22 @@
+.search {
+  border: grey solid 1px;
+  border-radius: 15px;
+  width: auto;
+}
+.search:focus-within {
+  border: #7f66de 1px solid;
+  box-shadow: 0 0 0 2px rgb(5 145 255 / 10%);
+  border-inline-end-width: 1px;
+  outline: 0;
+}
+.search:hover {
+  border: #7f66de 1px solid !important;
+}
+
+.search > input.ant-input {
+  background-color: transparent;
+  color: grey;
+}
+.search > input.ant-input::placeholder {
+  color: grey;
+}

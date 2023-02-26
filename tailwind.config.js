@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   presets: [],
   darkMode: "media", // or 'class'
   theme: {
@@ -163,6 +163,13 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      header: "#21212133",
+      primary: "#c4c4c4",
+      "#7f66de": "#7f66de",
+      "#1d1d1d": "#1d1d1d",
+      "#707070": "#707070",
+      "#44edfe": "#44edfe",
+      "#c8235d": "#c8235d",
     }),
     columns: {
       auto: "auto",
@@ -509,6 +516,13 @@ module.exports = {
       min: "min-content",
       max: "max-content",
       fit: "fit-content",
+      "22vh": "22vh",
+      "30vh": "30vh",
+      "35vh": "35vh",
+      "40vh": "40vh",
+      "60vh": "60vh",
+      "70vh": "70vh",
+      "75vh": "75vh",
     }),
     hueRotate: {
       0: "0deg",
@@ -628,6 +642,7 @@ module.exports = {
       0: "0px",
       full: "100%",
       screen: "100vh",
+
       min: "min-content",
       max: "max-content",
       fit: "fit-content",

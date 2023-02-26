@@ -16,7 +16,6 @@ const Showtime = () => {
   const dispatch = useDispatch();
   const props = useSelector((state) => state.movieReducer);
 
-  console.log(props.movie);
   const param = useParams();
 
   // call api lấy thông tin hệ thống rạp và thông tin phim
@@ -31,7 +30,7 @@ const Showtime = () => {
         setState({ ...state, heThongRapChieu: result.data.content });
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data.content);
       });
   }, []);
 
@@ -60,11 +59,18 @@ const Showtime = () => {
     },
   });
 
-  // tạo object mới từ state.(hệ thống rạp chiếu)
-  const convertObj = (value, property1, property2) => {
-    return value?.map((items) => ({
-      label: items[property1],
-      value: items[property2],
+  // tạo object heThongRapChieu mới từ state
+  const convertObjHeThongRapChieu = () => {
+    return state.heThongRapChieu?.map((heThongRapChieu) => ({
+      label: heThongRapChieu.tenHeThongRap,
+      value: heThongRapChieu.maHeThongRap,
+    }));
+  };
+
+  const convertObjCumRapChieu = () => {
+    return state.cumRapChieu?.map((cumRapChieu) => ({
+      label: cumRapChieu.tenCumRap,
+      value: cumRapChieu.maCumRap,
     }));
   };
 
@@ -75,7 +81,7 @@ const Showtime = () => {
         setState({ ...state, cumRapChieu: result.data.content });
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data.content);
       });
   };
 
@@ -119,11 +125,7 @@ const Showtime = () => {
       >
         <Form.Item label="Hệ thống rạp">
           <Select
-            options={convertObj(
-              state.heThongRapChieu,
-              "tenHeThongRap",
-              "maHeThongRap"
-            )}
+            options={convertObjHeThongRapChieu()}
             onChange={handleChangeHeThongRapSelect}
           />
           {formik.errors.maRap && formik.touched.maRap && (
@@ -133,7 +135,7 @@ const Showtime = () => {
         <Form.Item label="Cụm rạp">
           <Select
             onChange={handleChange("maRap")}
-            options={convertObj(state.cumRapChieu, "tenCumRap", "maCumRap")}
+            options={convertObjCumRapChieu()}
           />
           {formik.errors.maRap && formik.touched.maRap && (
             <Alert type="error" message={formik.errors.maRap} banner />
