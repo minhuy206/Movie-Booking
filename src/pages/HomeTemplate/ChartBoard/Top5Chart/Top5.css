@@ -1,0 +1,53 @@
+.top5Item {
+  background-image: linear-gradient(
+    to right,
+    #3d3d3d,
+    #494949,
+    #565656,
+    #636363,
+    #707070
+  );
+  transition: all ease-in-out 0.3s;
+  height: 19%;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0;
+}
+
+.top5Item:hover {
+  background-image: linear-gradient(
+    to right,
+    #7f66de80,
+    #7f66de80,
+    #7f66de80,
+    #7f66de80,
+    #7f66de80
+  );
+}
+
+.top5Item:hover .index::before {
+  height: 100%;
+}
+
+.index::after {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: #707070;
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+}
+.index::before {
+  z-index: 50;
+  content: "";
+  width: 2px;
+  height: 0;
+  background-color: #c8235d;
+  position: absolute;
+  top: 0;
+  right: 0%;
+  transition: all 0.3s ease-in-out;
+}

@@ -1,10 +1,18 @@
-import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import "./Top3.css";
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import "./Top5.css";
 
-const product = {
+const movie = {
   images: [
+    {
+      src: "https://media.zicxa.com/1115165",
+      alt: "Two each of gray, white, and black shirts laying flat.",
+    },
+    {
+      src: "https://media.zicxa.com/1115165",
+      alt: "Two each of gray, white, and black shirts laying flat.",
+    },
     {
       src: "https://media.zicxa.com/1115165",
       alt: "Two each of gray, white, and black shirts laying flat.",
@@ -21,86 +29,37 @@ const product = {
   ],
 };
 
-export const Top3 = () => {
+export const Top5 = () => {
   return (
-    <div className="flex justify-between h-full">
-      <div className="hidden rounded-2xl lg:block top1Item">
-        <img
-          src={product.images[0].src}
-          alt={product.images[0].alt}
-          className="h-full w-full object-cover object-center"
-        />
-        <div className="top1Score absolute p-1 text-center">
-          <span className="text-white text-sm">7.2</span>
-          <span className="text-primary text-xs">/10</span>
-          <span>⭐️</span>
-        </div>
-        <div className="p-5 top3Overplay h-1/3">
-          <p className="text-white relative top1 text-5xl inline-block">01</p>
-          <p className="uppercase text-white text-2xl mt-4">
-            SpiderMan: into The spider-verse
-          </p>
-        </div>
-        <div className="hoverOverplay">
-          <FontAwesomeIcon
-            icon={faCirclePlay}
-            size="6x"
-            className="text-primary "
-          />
-        </div>
-      </div>
-      <div className="top23ItemContainer">
-        <div className="rounded-2xl top2Item">
-          <img
-            src={product.images[1].src}
-            alt={product.images[1].alt}
-            className="h-full w-full object-cover object-center"
-          />
-          <div className="top2Score p-1">
-            <span className="text-white text-sm">8.1</span>
-            <span className="text-primary text-xs">/10</span>
-            <span>⭐️</span>
+    <div
+      className="top5 flex flex-col justify-between h-full"
+      style={{ fontFamily: "'Oxygen', sans-serif" }}
+    >
+      {movie.images.map((movie, index) => (
+        <div key={index} className="top5Item rounded-lg p-2">
+          <div className="flex items-center flex-1 w-3/4">
+            <div className="w-1/4">
+              <p
+                className="index w-full relative text-center text-5xl text-white"
+                style={{ fontFamily: "'Viga', sans-serif" }}
+              >
+                {index + 1}
+              </p>
+            </div>
+            <div className="ml-4 w-3/4 flex-1">
+              <p className="text-white text-xl font-bold">Mortal Kombat</p>
+              <p className="text-primary text-sm">123456 views</p>
+            </div>
           </div>
-          <div className="top3Overplay h-1/3 p-5 flex items-center">
-            <p className="text-white relative text-5xl inline-block top2 mr-5">
-              02
-            </p>
-            <p className="uppercase text-white text-xl">Mortal Kombat</p>
-          </div>
-          <div className="hoverOverplay">
-            <FontAwesomeIcon
-              icon={faCirclePlay}
-              size="6x"
-              className="text-primary "
+          <div className="w-1/4 h-full overflow-hidden rounded-lg">
+            <img
+              src={movie.src}
+              alt={movie.src}
+              className="h-full w-full object-cover object-center"
             />
           </div>
         </div>
-        <div className="rounded-2xl top3Item">
-          <img
-            src={product.images[2].src}
-            alt={product.images[2].alt}
-            className="h-full w-full object-cover object-center"
-          />
-          <div className="top3Score absolute p-1 text-center">
-            <span className="text-white text-sm">7.2</span>
-            <span className="text-primary text-xs">/10</span>
-            <span>⭐️</span>
-          </div>
-          <div className="top3Overplay h-1/3 p-5 flex items-center">
-            <p className="text-white relative text-5xl inline-block top3 mr-5">
-              03
-            </p>
-            <p className="uppercase text-white text-xl">Jonh Wick chapter 3</p>
-          </div>
-          <div className="hoverOverplay">
-            <FontAwesomeIcon
-              icon={faCirclePlay}
-              size="6x"
-              className="text-primary "
-            />
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

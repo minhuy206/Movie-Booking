@@ -1,0 +1,152 @@
+.top3Overplay {
+  background-color: #1d1d1d80;
+  transition: all 0.5s ease-in-out;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.top1Item {
+  width: 39%;
+  overflow: hidden;
+  position: relative;
+}
+.top23ItemContainer {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top2Item,
+.top3Item {
+  height: 49%;
+  overflow: hidden;
+  position: relative;
+}
+
+.top1Item:hover .top3Overplay {
+  /* transform: translateY(100%); */
+  opacity: 0;
+}
+.top2Item:hover .top3Overplay {
+  /* transform: translateY(100%); */
+  opacity: 0;
+}
+
+.top3Item:hover .top3Overplay {
+  /* transform: translateY(100%); */
+  opacity: 0;
+}
+.top1::after {
+  border-radius: 5px;
+  content: "";
+  position: absolute;
+  bottom: -8%;
+  left: 0;
+  height: 4px;
+  width: 125%;
+  background-image: linear-gradient(
+    to right,
+    #c8235d,
+    #c82a7f,
+    #bd3ca1,
+    #a651c2,
+    #7f66de
+  );
+}
+
+.top2::after,
+.top3::after {
+  border-radius: 5px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -20%;
+  height: 120%;
+  width: 4px;
+  background-image: linear-gradient(
+    to bottom,
+    #c8235d,
+    #c82a7f,
+    #bd3ca1,
+    #a651c2,
+    #7f66de
+  );
+}
+
+.top1Score {
+  top: 20px;
+  right: 20px;
+  width: 65px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #70707080;
+  transition: all 0.5s ease-in-out;
+}
+
+.top2Score,
+.top3Score {
+  top: 20px;
+  right: 20px;
+  width: 65px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #70707080;
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  text-align: center;
+}
+
+.top1Score span,
+.top2Score span,
+.top3Score span {
+  height: 35px;
+}
+
+.top1Item:hover .top1Score,
+.top2Item:hover .top2Score,
+.top3Item:hover .top3Score {
+  /* transform: translateY(-200%); */
+  opacity: 0;
+}
+
+.hoverOverplay {
+  opacity: 0;
+  background-color: #70707080;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top1Item:hover .hoverOverplay {
+  opacity: 1;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
+}
+.top2Item:hover .hoverOverplay {
+  opacity: 1;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
+}
+.top3Item:hover .hoverOverplay {
+  opacity: 1;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+  }
+
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

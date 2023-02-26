@@ -1,0 +1,13 @@
+.chartLeft {
+  height: 55vh;
+  width: 64%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartRight {
+  width: 35%;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+}
