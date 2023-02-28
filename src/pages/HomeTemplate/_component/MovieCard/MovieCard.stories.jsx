@@ -5,4 +5,4 @@ export default {
   component: Card,
 };
 
-export const MovieCards = () => <Card />;
+export const MovieCard = () => <Card />;

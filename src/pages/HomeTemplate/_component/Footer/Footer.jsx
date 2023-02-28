@@ -6,6 +6,7 @@ import {
   faInstagram,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import Logo from "../../../../assets/logo.png";
 
 export const Footer = ({ ...props }) => {
   return (
@@ -13,9 +14,7 @@ export const Footer = ({ ...props }) => {
       <div className="mx-6 py-10">
         <div className="layout pb-10 lg:grid lg:gap-8 hidden justify-between">
           <div className="logo order-first">
-            <h6 className="text-center">
-              <img src="../src/assets/logo" alt="logo" />
-            </h6>
+            <img src={Logo} width={200} alt="logo" className="m-auto" />
           </div>
           <div className="title">
             <h6 className="text-2xl text-primary">ADDRESSES & CONTACTS</h6>

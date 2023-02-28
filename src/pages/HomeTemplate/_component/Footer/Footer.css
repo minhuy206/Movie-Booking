@@ -1,3 +1,15 @@
+footer {
+  margin-top: 115px;
+  background-image: linear-gradient(
+    to bottom,
+    #3d3d3d,
+    #353535,
+    #2d2d2d,
+    #252525,
+    #1d1d1d
+  );
+}
+
 .layout {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 10% 45% 45%;

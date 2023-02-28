@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../button/Button";
 
-export const Carousel = ({ ...props }) => {
+export const Carousel = ({ sliders, ...props }) => {
   function NextArrow(props) {
     const { className, onClick, chilren } = props;
     return (
@@ -47,27 +47,10 @@ export const Carousel = ({ ...props }) => {
       />
     ),
   };
-  const sliders = [
-    {
-      maBanner: 1,
-      maPhim: 1282,
-      hinhAnh: "https://movienew.cybersoft.edu.vn/hinhanh/ban-tay-diet-quy.png",
-    },
-    {
-      maBanner: 2,
-      maPhim: 1283,
-      hinhAnh: "https://images3.alphacoders.com/103/1033561.jpg",
-    },
-    {
-      maBanner: 3,
-      maPhim: 1284,
-      hinhAnh: "https://images3.alphacoders.com/117/1177621.jpg",
-    },
-  ];
   const renderSlider = () => {
     return sliders.map((slider, index) => {
       const sliderStyle = {
-        height: "80vh",
+        height: "85vh",
         backgroundImage: `url(${slider.hinhAnh})`,
         backgroundSize: "cover",
         backgroundPosition: "top",
@@ -75,7 +58,7 @@ export const Carousel = ({ ...props }) => {
         position: "relative",
       };
       return (
-        <div style={{ height: "80vh" }} key={index}>
+        <div key={index}>
           <div style={sliderStyle}>
             <img
               className="w-full h-full opacity-0"
@@ -104,12 +87,12 @@ export const Carousel = ({ ...props }) => {
                 label={<span className="text-sm">BOOK NOW</span>}
               />
               <div className="moreInfoText hover:opacity-75 md:hidden flex z-50 transition ease-in-out duration-300">
-                <p className="text-primary flex ">
+                <div className="flex ">
                   <div className="mr-2 infoIcon flex items-center justify-center rounded-full">
-                    <span>i</span>
+                    <span className="text-primary">i</span>
                   </div>
-                  More info
-                </p>
+                  <p className="text-primary">More info</p>
+                </div>
               </div>
             </div>
             <Button
@@ -123,10 +106,10 @@ export const Carousel = ({ ...props }) => {
     });
   };
   return (
-    <div className="carousel relative" style={{ height: "80vh" }}>
-      <Slider {...settings} style={{ height: "80vh" }}>
-        {renderSlider()}
-      </Slider>
-    </div>
+    <section className="carousel">
+      <div className="relative">
+        <Slider {...settings}>{renderSlider()}</Slider>
+      </div>
+    </section>
   );
 };

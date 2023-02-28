@@ -1,0 +1,47 @@
+.movieImg {
+  border-radius: 8px 8px 0 0;
+}
+
+.detailMovie {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.DetailMovie {
+  border-top: 1px solid white;
+}
+
+.bookNowBtn {
+  border: none;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 100px #c8235d;
+  font-family: "Viga", sans-serif;
+  padding: 20px 40px;
+}
+
+.bookNowBtn:hover {
+  box-shadow: inset 0 0 0 1px #c8235d;
+  color: #c8235d;
+}
+
+.bookNowBtn:active {
+  box-shadow: 0px 0px 20px 0px #c8235d;
+  color: #c8235d;
+}
+
+.tomatoesReview {
+  border: 0.5px solid white;
+  width: 65%;
+}
+
+.imbdScore {
+  border: 0.5px solid white;
+  width: 32%;
+}
+
+.castCard {
+  width: 32%;
+}

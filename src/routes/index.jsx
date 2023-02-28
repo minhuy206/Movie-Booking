@@ -20,12 +20,12 @@ const routes = [
           return import("../pages/HomeTemplate/Home");
         }),
       },
-      //     {
-      //       path: "users/addnew",
-      //       element: lazy(() => {
-      //         return import("../pages/AdminTemplate/user-management/add");
-      //       }),
-      //     },
+      {
+        path: "detail/:id",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/DetailMovie/DetailMovie");
+        }),
+      },
       //     {
       //       path: "users/edit/:username",
       //       element: lazy(() => {

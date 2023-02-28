@@ -7,6 +7,7 @@ import { Button } from "../button/Button";
 import { SearchOutlined } from "@ant-design/icons";
 import { Popover, Dialog, Transition } from "@headlessui/react";
 import { Search } from "../Search/Search";
+import Logo from "../../../../assets/logo.png";
 
 export const Header = ({ ...props }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export const Header = ({ ...props }) => {
       >
         <div className="flex flex-1 justify-center lg:justify-start lg:w-2/12 md:w-2/12 ">
           <a href className="-m-1.5 p-1.5 text-white">
-            <img src="../src/assets/logo.png" alt="logo" />
+            <img width={50} src={Logo} alt="logo" />
           </a>
         </div>
         <div className="flex absolute md:hidden">
@@ -45,7 +46,7 @@ export const Header = ({ ...props }) => {
               //     ? "navlinkNavbar text-sm font-semibold leading-6 text-white relative navlinkNavbarActive"
               //     : "navlinkNavbar text-sm font-semibold leading-6 text-white relative"
               // }
-              className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out active link"
+              className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out active link font-Viga"
             >
               Movies
             </a>
@@ -58,7 +59,7 @@ export const Header = ({ ...props }) => {
               //     ? "navlinkNavbar text-sm font-semibold leading-6 text-white relative navlinkNavbarActive"
               //     : "navlinkNavbar text-sm font-semibold leading-6 text-white relative"
               // }
-              className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out link"
+              className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
             >
               Cinemas
             </a>
@@ -71,7 +72,7 @@ export const Header = ({ ...props }) => {
               //     ? "navlinkNavbar text-sm font-semibold leading-6 text-white relative navlinkNavbarActive"
               //     : "navlinkNavbar text-sm font-semibold leading-6 text-white relative"
               // }
-              className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out link"
+              className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
             >
               Offers
             </a>
@@ -179,7 +180,7 @@ export const Header = ({ ...props }) => {
                               //     ? "-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 sm:text-base text-xs text-white bg-#7f66de "
                               //     : "-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-white sm:text-base text-xs hover:bg-#7f66de "
                               // }
-                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
+                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold font-Viga leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
                             >
                               Movies
                             </a>
@@ -191,7 +192,7 @@ export const Header = ({ ...props }) => {
                               //     ? "-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 sm:text-base text-xs text-white bg-#7f66de"
                               //     : "-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 sm:text-base text-xs text-white hover:bg-#7f66de "
                               // }
-                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
+                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold font-Viga leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
                             >
                               Cinemas
                             </a>
@@ -203,7 +204,7 @@ export const Header = ({ ...props }) => {
                               //     ? "-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 sm:text-base text-xs bg-#7f66de text-white"
                               //     : "-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 sm:text-base text-xs text-white hover:bg-#7f66de "
                               // }
-                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
+                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold font-Viga leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
                             >
                               Offers
                             </a>
@@ -212,7 +213,7 @@ export const Header = ({ ...props }) => {
                             <a
                               href
                               // to={""}
-                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
+                              className="-mx-3 block rounded-lg py-2 px-3 font-semibold font-Viga leading-7 text-white sm:text-base text-xs hover:bg-#7f66de duration-300 transition ease-in-out"
                             >
                               Log in
                             </a>

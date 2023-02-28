@@ -6,7 +6,6 @@ export const fetchSliders = () => {
     api
       .get("QuanLyPhim/LayDanhSachBanner")
       .then((result) => {
-        console.log(result);
         dispatch(fetchSlidersSuccess(result.data.content));
       })
       .catch((error) => {
@@ -34,7 +33,6 @@ export const fetchMovies = () => {
     api
       .get("QuanLyPhim/LayDanhSachPhim?maNhom=GP06")
       .then((result) => {
-        console.log(result);
         dispatch(fetchMoviesSuccess(result.data.content));
       })
       .catch((error) => {

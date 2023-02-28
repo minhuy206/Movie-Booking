@@ -170,6 +170,7 @@ module.exports = {
       "#707070": "#707070",
       "#44edfe": "#44edfe",
       "#c8235d": "#c8235d",
+      "#3d3d3d": "#3d3d3d",
     }),
     columns: {
       auto: "auto",
@@ -346,6 +347,8 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
+      Viga: "Viga, san-serif",
+      Oxygen: "Oxygen, san-serif",
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],

@@ -1,10 +1,9 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 import renderRoutes from "./routes";
 import { Suspense } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
-import ReactDOM from "react-dom";
 
 const antIcon = (
   <LoadingOutlined

@@ -7,12 +7,19 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Avatar } from "antd";
 import SubMenu from "antd/es/menu/SubMenu";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, NavLink, Outlet } from "react-router-dom";
 
 const { Sider, Content, Footer } = Layout;
 
 const AdminTemplate = () => {
+  useEffect(() => {
+    console.log("Mounting");
+    return () => {
+      console.log("Clear ss");
+    };
+  }, []);
+
   let username = "";
   if (!localStorage.getItem("User")) {
     return <Navigate replace to="/login" key="/login" />;

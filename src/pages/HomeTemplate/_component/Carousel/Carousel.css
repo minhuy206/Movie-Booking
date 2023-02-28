@@ -4,10 +4,6 @@
       xl: "1280px",
       "2xl": "1536px", */
 
-.carousel {
-  font-family: "Oxygen", sans-serif;
-}
-
 @media screen and (max-width: 640px) {
   .carouselContent {
     bottom: 3%;

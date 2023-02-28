@@ -7,6 +7,16 @@ const initialState = {
       maPhim: 1282,
       hinhAnh: "https://movienew.cybersoft.edu.vn/hinhanh/ban-tay-diet-quy.png",
     },
+    {
+      maBanner: 2,
+      maPhim: 1283,
+      hinhAnh: "https://images3.alphacoders.com/103/1033561.jpg",
+    },
+    {
+      maBanner: 3,
+      maPhim: 1284,
+      hinhAnh: "https://images3.alphacoders.com/117/1177621.jpg",
+    },
   ],
   movies: [
     {
@@ -86,7 +96,7 @@ const initialState = {
   error: null,
 };
 
-export const homeReducer = (state = initialState, action) => {
+const homeReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SLIDERS_SUCCESS:
       state.sliders = action.data;
@@ -104,3 +114,4 @@ export const homeReducer = (state = initialState, action) => {
       return { ...state };
   }
 };
+export default homeReducer;

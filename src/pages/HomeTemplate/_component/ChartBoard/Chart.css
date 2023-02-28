@@ -1,0 +1,16 @@
+.chart {
+  padding-top: 115px;
+}
+.chartLeft {
+  width: 64%;
+}
+
+.chartRight {
+  width: 35%;
+}
+
+@media screen and (max-width: 1023px) {
+  .chartRight {
+    width: 100%;
+  }
+}

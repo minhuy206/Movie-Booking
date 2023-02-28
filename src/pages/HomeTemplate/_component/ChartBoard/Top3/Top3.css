@@ -1,3 +1,15 @@
+@media screen and (min-width: 1201px) {
+  .top3Content {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .top3Content {
+    height: 500px;
+  }
+}
+
 .top3Overplay {
   background-color: #1d1d1d80;
   transition: all 0.5s ease-in-out;
@@ -12,6 +24,7 @@
   overflow: hidden;
   position: relative;
 }
+
 .top23ItemContainer {
   width: 60%;
   display: flex;
@@ -27,16 +40,16 @@
 }
 
 .top1Item:hover .top3Overplay {
-  /* transform: translateY(100%); */
+  transform: translateY(100%);
   opacity: 0;
 }
 .top2Item:hover .top3Overplay {
-  /* transform: translateY(100%); */
+  transform: translateY(100%);
   opacity: 0;
 }
 
 .top3Item:hover .top3Overplay {
-  /* transform: translateY(100%); */
+  transform: translateY(100%);
   opacity: 0;
 }
 .top1::after {
@@ -64,8 +77,8 @@
   position: absolute;
   bottom: 0;
   right: -20%;
-  height: 120%;
-  width: 4px;
+  height: 100%;
+  width: 3px;
   background-image: linear-gradient(
     to bottom,
     #c8235d,
@@ -84,6 +97,7 @@
   border-radius: 5px;
   background-color: #70707080;
   transition: all 0.5s ease-in-out;
+  line-height: 35px;
 }
 
 .top2Score,
@@ -97,6 +111,7 @@
   transition: all 0.5s ease-in-out;
   position: absolute;
   text-align: center;
+  line-height: 35px;
 }
 
 .top1Score span,
@@ -108,7 +123,7 @@
 .top1Item:hover .top1Score,
 .top2Item:hover .top2Score,
 .top3Item:hover .top3Score {
-  /* transform: translateY(-200%); */
+  transform: translateY(-200%);
   opacity: 0;
 }
 
@@ -128,25 +143,10 @@
 
 .top1Item:hover .hoverOverplay {
   opacity: 1;
-  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
 }
 .top2Item:hover .hoverOverplay {
   opacity: 1;
-  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
 }
 .top3Item:hover .hoverOverplay {
   opacity: 1;
-  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) 1;
-}
-
-@keyframes ping {
-  0% {
-    transform: scale(1);
-  }
-
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
 }

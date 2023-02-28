@@ -1,11 +1,23 @@
+@media screen and (min-width: 1201px) {
+  .top5Content {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .top5Content {
+    height: 500px;
+  }
+}
+
 .top5Item {
   background-image: linear-gradient(
     to right,
-    #3d3d3d,
-    #494949,
-    #565656,
-    #636363,
-    #707070
+    #2d2d2d,
+    #313131,
+    #353535,
+    #393939,
+    #3d3d3d
   );
   transition: all ease-in-out 0.3s;
   height: 19%;
