@@ -1,15 +1,19 @@
 import React, { Fragment, useRef, useState } from "react";
-import PropTypes from "prop-types";
-import "./Header.css";
-// import { NavLink } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "../button/Button";
 import { SearchOutlined } from "@ant-design/icons";
 import { Popover, Dialog, Transition } from "@headlessui/react";
 import { Search } from "../Search/Search";
 import Logo from "../../../../assets/logo.png";
+import { NavLink } from "react-router-dom";
+import "./Header.css";
+import LoginModal from "../LoginModal/LoginModal";
 
 export const Header = ({ ...props }) => {
+  const [open, setOpen] = useState(false);
+  const setIsOpen = () => {
+    setOpen(false);
+  };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const headerRef = useRef(null);
   return (
@@ -19,9 +23,9 @@ export const Header = ({ ...props }) => {
         aria-label="Global"
       >
         <div className="flex flex-1 justify-center lg:justify-start lg:w-2/12 md:w-2/12 ">
-          <a href className="-m-1.5 p-1.5 text-white">
+          <NavLink href className="-m-1.5 p-1.5 text-white">
             <img width={50} src={Logo} alt="logo" />
-          </a>
+          </NavLink>
         </div>
         <div className="flex absolute md:hidden">
           <button
@@ -104,7 +108,18 @@ export const Header = ({ ...props }) => {
             label={<p className="text-sm font-bold leading-6">LOG IN</p>}
             variant="secondary"
             size="large"
+            onClick={() => {
+              setOpen(true);
+            }}
           ></Button>
+          {/* <button
+            className="loginBtn text-sm font-bold leading-6"
+            onClick={() => {
+              setIsOpen(true);
+            }}
+          >
+            <p className="text-sm font-bold leading-6">LOG IN</p>
+          </button> */}
         </div>
       </nav>
       <Transition.Root
@@ -240,17 +255,7 @@ export const Header = ({ ...props }) => {
           </div>
         </Dialog>
       </Transition.Root>
+      <LoginModal open={open} setIsOpen={setIsOpen} />
     </header>
   );
-};
-
-Header.propTypes = {
-  user: PropTypes.shape({}),
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
-  onCreateAccount: PropTypes.func.isRequired,
-};
-
-Header.defaultProps = {
-  user: null,
 };

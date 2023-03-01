@@ -24,7 +24,7 @@ const fetchMovieSuccess = (data) => {
 
 const fetchMovieError = (error) => {
   return {
-    type: types.MOVIE_SUCCESS,
+    type: types.MOVIE_FAIL,
     error: error,
   };
 };

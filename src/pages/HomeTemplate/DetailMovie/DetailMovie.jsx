@@ -1,25 +1,39 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import Detail from "../_component/DetailMovie/DetailMovie";
 import { fetchMovie } from "./duck/action";
+import movieBanner from "../../../assets/movieBanner.jpeg";
 
 export default function DetailMovie() {
   const dispatch = useDispatch();
   const { movie } = useSelector((state) => state.detailMovieReducer);
   const { id } = useParams();
+
   useEffect(() => {
     dispatch(fetchMovie(id));
   }, []);
-  console.log(movie);
+
+  const sliderStyle = {
+    height: "60vh",
+    backgroundImage: `url(${movieBanner})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    position: "absolute",
+    width: "100%",
+  };
   return (
     <>
       <>
-        <Detail movie={movie} />
+        <section className="movieBanner hidden md:block z-0">
+          <div style={sliderStyle}></div>
+        </section>
       </>
       <>
-        <div></div>
+        <Detail movie={movie} />
       </>
+      <></>
     </>
   );
 }

@@ -3,7 +3,6 @@ import React from "react";
 import Fresh from "../../../../assets/Certified_Fresh_2018.svg.png";
 import Popcorn from "../../../../assets/212px-Rotten_Tomatoes_positive_audience.svg.png";
 import imdb from "../../../../assets/imdb@._V1_.png";
-import movieBanner from "../../../../assets/movieBanner.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const actors = [
@@ -134,22 +133,10 @@ export default function Detail({ movie }) {
     );
   };
 
-  const sliderStyle = {
-    height: "60vh",
-    backgroundImage: `url(${movieBanner})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    position: "absolute",
-    width: "100%",
-  };
   return (
     <>
-      <section className="movieBanner hidden lg:block">
-        <div style={sliderStyle}></div>
-      </section>
       <section className="DetailMovie">
-        <div className="mx-auto w-11/12 rounded-xl bg-#3d3d3d lg:p-12 lg:w-5/6 lg:z-20 lg:relative lg:mt-96">
+        <div className="mx-auto md:w-11/12 rounded-xl bg-#3d3d3d lg:p-12 lg:w-5/6 md:z-20 md:relative md:mt-96">
           <div
             className="lg:flex hidden overflow-hidden"
             style={{ height: "30vh" }}
@@ -259,7 +246,14 @@ export default function Detail({ movie }) {
                       </div>
                     </div>
                   </div>
-                  <button className="bookNowBtn text-2xl">Book now</button>
+                  <button
+                    className="bookNowBtn text-2xl"
+                    onClick={() => {
+                      navigate(`/detail/showtime/${movie.maPhim}`);
+                    }}
+                  >
+                    Book now
+                  </button>
                 </div>
               </div>
 
@@ -360,7 +354,12 @@ export default function Detail({ movie }) {
                       </div>
                     </div>
                   </div>
-                  <button className="bookNowBtn text-2xl mt-3 w-full lg:mt-2 lg:w-auto lg:inline-block md:hidden">
+                  <button
+                    className="bookNowBtn text-2xl mt-3 w-full lg:mt-2 lg:w-auto lg:inline-block md:hidden"
+                    onClick={() => {
+                      navigate(`/detail/showtime/${movie.maPhim}`);
+                    }}
+                  >
                     Book now
                   </button>
                 </div>

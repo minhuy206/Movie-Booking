@@ -171,6 +171,7 @@ module.exports = {
       "#44edfe": "#44edfe",
       "#c8235d": "#c8235d",
       "#3d3d3d": "#3d3d3d",
+      "#c4c4c480": "#c4c4c480",
     }),
     columns: {
       auto: "auto",

@@ -95,11 +95,14 @@ export const Carousel = ({ sliders, ...props }) => {
                 </div>
               </div>
             </div>
-            <Button
-              size={"large"}
-              tailwindClasses={["carouselBtn", "hidden", "md:block"]}
-              label={<span className="text-sm">BOOK NOW</span>}
-            />
+            <button
+              className="carouselBtn text-sm text-white font-Viga md:block hidden"
+              onClick={() => {
+                console.log(123);
+              }}
+            >
+              BOOK NOW
+            </button>
           </div>
         </div>
       );

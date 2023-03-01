@@ -26,12 +26,12 @@ const routes = [
           return import("../pages/HomeTemplate/DetailMovie/DetailMovie");
         }),
       },
-      //     {
-      //       path: "users/edit/:username",
-      //       element: lazy(() => {
-      //         return import("../pages/AdminTemplate/user-management/edit");
-      //       }),
-      //     },
+      {
+        path: "detail/showtime/:id",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/Showtime/Showtime");
+        }),
+      },
       //     {
       //       path: "movies",
       //       element: lazy(() => {

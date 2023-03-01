@@ -10,15 +10,14 @@ export const Button = ({
   label,
   size,
   tailwindClasses,
+  onClick,
   ...props
 }) => {
   return (
     <button
       type="button"
-      className={`btn btn-${variant} btn-${size} ${[...tailwindClasses].join(
-        " "
-      )}`}
-      {...props}
+      className={`btn btn-${variant} btn-${size} ${tailwindClasses.join(" ")}`}
+      onClick={onClick}
     >
       {label}
     </button>

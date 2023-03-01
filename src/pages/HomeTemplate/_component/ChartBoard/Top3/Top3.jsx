@@ -1,9 +1,27 @@
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
+import TrailerModal from "../../trailerModal/TrailerModal";
 import "./Top3.css";
 
 export const Top3 = ({ top5Movies }) => {
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [trailer, setTrailer] = useState(top5Movies[0].trailer);
+
+  const setIsOpen = () => {
+    setOpen(false);
+  };
+
+  const setIsOpen1 = () => {
+    setOpen1(false);
+  };
+
+  const setIsOpen2 = () => {
+    setOpen2(false);
+  };
+
   return (
     <div className="top-3">
       <div className="top3Title">
@@ -15,7 +33,7 @@ export const Top3 = ({ top5Movies }) => {
         <div className="hidden rounded-2xl lg:block md:block top1Item">
           <img
             src={top5Movies[0].hinhAnh}
-            alt={top5Movies[0].alt}
+            alt={top5Movies[0].tenPhim}
             className="h-full w-full object-cover object-center"
           />
           <div className="top1Score absolute text-center">
@@ -38,14 +56,19 @@ export const Top3 = ({ top5Movies }) => {
               icon={faCirclePlay}
               size="6x"
               className="text-primary hover:opacity-50 transition duration-300 ease-in"
+              onClick={() => {
+                setOpen(true);
+                setTrailer(top5Movies[0].trailer);
+              }}
             />
           </div>
+          <TrailerModal open={open} trailer={trailer} setIsOpen={setIsOpen} />
         </div>
         <div className="top23ItemContainer">
           <div className="rounded-2xl top2Item">
             <img
               src={top5Movies[1].hinhAnh}
-              alt={top5Movies[1].alt}
+              alt={top5Movies[1].tenPhim}
               className="h-full w-full"
             />
             <div className="top2Score">
@@ -73,13 +96,22 @@ export const Top3 = ({ top5Movies }) => {
                 icon={faCirclePlay}
                 size="6x"
                 className="text-primary hover:opacity-50 transition duration-300 ease-in"
+                onClick={() => {
+                  setOpen1(true);
+                  setTrailer(top5Movies[1].trailer);
+                }}
               />
             </div>
+            <TrailerModal
+              open={open1}
+              trailer={trailer}
+              setIsOpen={setIsOpen1}
+            />
           </div>
           <div className="rounded-2xl top3Item">
             <img
               src={top5Movies[2].hinhAnh}
-              alt={top5Movies[2].alt}
+              alt={top5Movies[2].tenPhim}
               className="h-full w-full"
             />
             <div className="top3Score absolute text-center">
@@ -102,8 +134,17 @@ export const Top3 = ({ top5Movies }) => {
                 icon={faCirclePlay}
                 size="6x"
                 className="text-primary hover:opacity-50 transition duration-300 ease-in"
+                onClick={() => {
+                  setOpen2(true);
+                  setTrailer(top5Movies[2].trailer);
+                }}
               />
             </div>
+            <TrailerModal
+              open={open2}
+              trailer={trailer}
+              setIsOpen={setIsOpen2}
+            />
           </div>
         </div>
       </div>
