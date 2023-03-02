@@ -22,7 +22,7 @@ export const Header = () => {
 
   return (
     <>
-      <header ref={headerRef} className="bg-transparent z-50">
+      <header ref={headerRef} className="bg-transparent z-10">
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
           aria-label="Global"
@@ -164,7 +164,7 @@ export const Header = () => {
           }}
           as={Fragment}
         >
-          <Dialog as="div" className="relative z-50">
+          <Dialog as="div" className="relative z-30">
             <Transition.Child
               as={Fragment}
               enter="ease-in-out duration-500"

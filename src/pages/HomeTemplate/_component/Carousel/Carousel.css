@@ -39,7 +39,7 @@
 }
 @media screen and (min-width: 768px) {
   .slick-prev {
-    z-index: 100;
+    z-index: 10;
     width: 45px;
     height: 72px;
     position: absolute;
@@ -70,7 +70,7 @@
   }
 
   .slick-next {
-    z-index: 100;
+    z-index: 10;
     right: 5% !important;
     width: 45px;
     height: 72px;

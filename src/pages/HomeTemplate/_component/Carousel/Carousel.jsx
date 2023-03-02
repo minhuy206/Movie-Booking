@@ -95,12 +95,7 @@ export const Carousel = ({ sliders, ...props }) => {
                 </div>
               </div>
             </div>
-            <button
-              className="carouselBtn text-sm text-white font-Viga md:block hidden"
-              onClick={() => {
-                console.log(123);
-              }}
-            >
+            <button className="carouselBtn text-sm text-white font-Viga md:block hidden relative z-10">
               BOOK NOW
             </button>
           </div>
