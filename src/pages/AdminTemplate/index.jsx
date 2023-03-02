@@ -31,8 +31,6 @@ const AdminTemplate = () => {
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={(broken) => {}}
-        onCollapse={(collapsed, type) => {}}
         theme="dark"
         style={{
           margin: "auto 20px auto 20px",

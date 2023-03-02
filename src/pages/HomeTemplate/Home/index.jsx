@@ -25,6 +25,7 @@ function Home() {
     <>
       <>
         <Carousel sliders={sliders} />
+        {/* <Carousel sliders={sliders} /> */}
       </>
       <>
         <Blockbuster hotMovies={filterHotMovies()} />
