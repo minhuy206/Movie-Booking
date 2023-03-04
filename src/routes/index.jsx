@@ -27,17 +27,17 @@ const routes = [
         }),
       },
       {
-        path: "detail/showtime/:id",
+        path: "showtime/:id",
         element: lazy(() => {
           return import("../pages/HomeTemplate/Showtime/Showtime");
         }),
       },
-      //     {
-      //       path: "movies",
-      //       element: lazy(() => {
-      //         return import("../pages/AdminTemplate/movies-management");
-      //       }),
-      //     },
+      {
+        path: "ticket-room/:maLichChieu",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/TicketRoom/TicketRoom");
+        }),
+      },
       //     {
       //       path: "movies/addnew",
       //       element: lazy(() => {

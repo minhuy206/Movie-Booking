@@ -5,6 +5,7 @@ import userReducer from "pages/AdminTemplate/user-management/duck/reducer";
 import homeReducer from "pages/HomeTemplate/Home/duck/reducer";
 import detailMovieReducer from "pages/HomeTemplate/DetailMovie/duck/reducer";
 import showtimeReducer from "pages/HomeTemplate/Showtime/duck/reducer";
+import ticketRoomReducer from "pages/HomeTemplate/TicketRoom/duck/reducer";
 
 const rootReducer = combineReducers({
   loginReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   homeReducer,
   detailMovieReducer,
   showtimeReducer,
+  ticketRoomReducer,
 });
 
 export default rootReducer;

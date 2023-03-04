@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Detail from "../_component/DetailMovie/DetailMovie";
 import { fetchMovie } from "./duck/action";
 import movieBanner from "../../../assets/movieBanner.jpeg";

@@ -3,8 +3,7 @@
     "baseUrl": "./src",
     "paths": {
       "AdminTemplate/*": ["./src/pages/AdminTemplate/*"],
-      "utils/*": ["./src/utils/*"],
-      "assets/*": ["./src/assets/*"]
+      "utils/*": ["./src/utils/*"]
     }
   }
 }

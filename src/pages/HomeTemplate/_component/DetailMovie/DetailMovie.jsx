@@ -251,7 +251,7 @@ export default function Detail({ movie }) {
                     className="bookNowBtn text-2xl"
                     onClick={() => {
                       if (localStorage.getItem("User")) {
-                        return navigate(`/detail/showtime/${movie.maPhim}`);
+                        return navigate(`/showtime/${movie.maPhim}`);
                       }
                       return setModalIsOpen(true);
                     }}
@@ -362,7 +362,7 @@ export default function Detail({ movie }) {
                     className="bookNowBtn text-2xl mt-3 w-full lg:mt-2 lg:w-auto lg:inline-block md:hidden"
                     onClick={() => {
                       if (localStorage.getItem("User")) {
-                        return navigate(`/detail/showtime/${movie.maPhim}`);
+                        return navigate(`/showtime/${movie.maPhim}`);
                       }
                       return setModalIsOpen(true);
                     }}

@@ -1,0 +1,28 @@
+@media screen and (max-width: 768px) {
+  .Unavailable {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .Unavailable {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Unavailable {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .Unavailable {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+}

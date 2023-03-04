@@ -1,0 +1,255 @@
+@media screen and (min-width: 1024px) {
+  .selectSeat,
+  .payment {
+    width: 66% !important;
+  }
+
+  .flexLeft,
+  .flexRight {
+    width: 49%;
+    background-image: linear-gradient(to bottom, #3d3d3d, #2d2d2d);
+  }
+}
+
+.content {
+  min-height: 70vh;
+}
+
+.selectSeat,
+.payment {
+  width: 100%;
+}
+
+.ant-steps-item {
+  width: calc(100% / 3);
+}
+
+.ant-steps-item-tail {
+  margin-inline-start: 0px !important;
+  padding: 0 !important;
+  top: 5px !important;
+  transform: translateY(-50%) !important;
+}
+
+.ant-steps .ant-steps-item-tail::after {
+  height: 3px;
+}
+
+.ant-steps
+  .ant-steps-item-wait
+  > .ant-steps-item-container
+  > .ant-steps-item-tail::after {
+  background-color: #707070;
+}
+
+.ant-steps
+  .ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-tail::after {
+  background-image: linear-gradient(
+    to right,
+    #c8235d,
+    #c82a7f,
+    #bd3ca1,
+    #a651c2,
+    #7f66de
+  );
+}
+
+.ant-steps
+  .ant-steps-item-finish
+  > .ant-steps-item-container
+  > .ant-steps-item-tail::after {
+  background-color: #c8235d;
+}
+
+.step .ant-steps-item-title {
+  display: none;
+}
+
+.step .ant-steps-item-active .ant-steps-item-title {
+  display: block !important;
+}
+
+.ant-steps.ant-steps-label-vertical .ant-steps-item-icon {
+  position: relative;
+  width: 10px !important;
+  height: 10px !important;
+  margin-inline-start: 0;
+}
+
+.ant-steps .ant-steps-item-process .ant-steps-item-icon {
+  background-color: #c8235d;
+  border: none;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #c8235d;
+  border: none;
+}
+
+.ant-steps .ant-steps-item-wait .ant-steps-item-icon {
+  background-color: #707070;
+  border: none;
+}
+
+.ant-steps-icon {
+  display: none !important;
+}
+
+.ant-steps-item-content {
+  top: -500%;
+  position: absolute !important;
+  white-space: nowrap;
+  margin-top: 0 !important;
+  text-align: left !important;
+}
+
+.ant-steps-item-title {
+  color: white !important;
+  font-weight: bold;
+  font-size: 20px !important;
+}
+
+.ant-steps-item:nth-child(2) .ant-steps-item-content {
+  left: -100%;
+}
+
+.ant-steps-item:last-child .ant-steps-item-content {
+  left: -200%;
+}
+
+.checkoutBtn {
+  box-shadow: inset 0 0 0 30px #c8235d;
+  font-family: "Viga", sans-serif !important;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.checkoutBtn:hover {
+  box-shadow: inset 0 0 0 1px #c8235d;
+  color: #c8235d;
+}
+
+.checkoutBtn:active {
+  box-shadow: 0px 0px 20px 0px #c8235d;
+  color: #c8235d;
+}
+
+.demoSeat {
+  border: 3px solid #707070;
+}
+
+.availableSeat {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #707070;
+  border-radius: 5px;
+}
+
+.selectingSeat {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #707070;
+  border-radius: 5px;
+}
+
+.unavailableSeat {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.payment .ant-input-affix-wrapper > input.ant-input {
+  background-color: transparent;
+  color: #c4c4c4;
+}
+
+.payment .ant-input-affix-wrapper:hover {
+  border: 2px solid #7f66de80;
+}
+
+.payment .ant-input-affix-wrapper:active {
+  border: 2px solid #7f66de;
+}
+
+.payment .ant-input-affix-wrapper:focus {
+  border: 2px solid #7f66de;
+}
+
+.payment .ant-input-affix-wrapper:focus-within {
+  border: 2px solid #7f66de;
+}
+
+.payment .ant-input-affix-wrapper > input.ant-input::placeholder {
+  font-weight: 500;
+  color: #707070;
+}
+
+.CVV {
+  width: 20%;
+}
+
+.expDate {
+  width: 78%;
+}
+
+.payment .next {
+  box-shadow: inset 0 0 0 30px #7f66de;
+  font-family: "Viga", sans-serif !important;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+}
+
+.payment .next:hover {
+  box-shadow: inset 0 0 0 1px #7f66de;
+  color: #7f66de !important;
+}
+
+.payment .next:active {
+  box-shadow: 0px 0px 20px 0px #7f66de;
+  color: #7f66de !important;
+}
+
+.payment .back {
+  border-radius: 8px;
+  color: #c4c4c4;
+  border: 1px solid #707070;
+  transition: all 0.3s ease-in-out;
+}
+
+.payment .back:hover {
+  opacity: 0.5;
+}
+
+.payment .back:active {
+  box-shadow: 0px 0px 20px 0px #707070;
+  border: 1px solid transparent;
+}
+
+.downloadETicketsBtn {
+  box-shadow: inset 0 0 0 30px #7f66de;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.downloadETicketsBtn:hover {
+  box-shadow: inset 0 0 0 1px #7f66de;
+  color: #7f66de;
+}
+
+.downloadETicketsBtn:active {
+  box-shadow: 0px 0px 20px 0px #7f66de;
+  color: #7f66de;
+}

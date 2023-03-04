@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import movieBanner from "../../../assets/movieBanner.jpeg";
 import { fetchShowtime } from "./duck/action";
 import "./Showtime.css";
 
 function Showtime() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { showtime } = useSelector((state) => state.showtimeReducer);
   const [activeCinemaIndex, setActiveCinemaIndex] = useState(-1);
   const [cinemas, setCinema] = useState(
-    showtime.heThongRapChieu[0].cumRapChieu
+    showtime.heThongRapChieu[0]?.cumRapChieu
   );
   const { id } = useParams();
   const showtimeRef = useRef(null);
@@ -30,26 +31,30 @@ function Showtime() {
   };
 
   const getStartTime = (day) => {
-    const startDay = day.split("-");
-    const time = startDay[2].split("T")[1].split(":").slice(0, 2).join(":");
-    return time;
+    if (day) {
+      const startDay = day.split("-");
+      const time = startDay[2].split("T")[1].split(":").slice(0, 2).join(":");
+      return time;
+    }
   };
 
   const getDayOfWeek = (day) => {
-    const weekday = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const startDay = day.split("-");
-    startDay[2] = startDay[2].split("T")[0];
-    const date = new Date(startDay.join("-"));
-    const dayOfWeek = weekday[date.getDay()];
-    return dayOfWeek;
+    if (day) {
+      const weekday = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const startDay = day.split("-");
+      startDay[2] = startDay[2].split("T")[0];
+      const date = new Date(startDay.join("-"));
+      const dayOfWeek = weekday[date.getDay()];
+      return dayOfWeek;
+    }
   };
 
   const sliderStyle = {
@@ -112,7 +117,7 @@ function Showtime() {
             <div className="border-b-2 border-#c4c4c480 pb-8">
               <h2 className="text-white text-3xl">Select Cinema</h2>
               <div className="flex space-x-3 mt-5">
-                {showtime?.heThongRapChieu.map((heThongRapChieu, index) => {
+                {showtime?.heThongRapChieu?.map((heThongRapChieu, index) => {
                   return (
                     <div
                       className="cinemaTab mr-5"
@@ -172,6 +177,11 @@ function Showtime() {
                           {cinema.lichChieuPhim.map((lichChieuPhim) => {
                             return (
                               <div
+                                onClick={() => {
+                                  navigate(
+                                    `/ticket-room/${lichChieuPhim.maLichChieu}`
+                                  );
+                                }}
                                 key={lichChieuPhim.maLichChieu}
                                 className="border border-#707070 p-5 transition ease-in-out duration-300 text-center text-white rounded-xl hover:bg-#7f66de"
                               >
@@ -267,6 +277,11 @@ function Showtime() {
                         {cinema?.lichChieuPhim.map((lichChieuPhim) => {
                           return (
                             <div
+                              onClick={() => {
+                                navigate(
+                                  `/ticket-room/${lichChieuPhim.maLichChieu}`
+                                );
+                              }}
                               key={lichChieuPhim.maLichChieu}
                               className="p-5 border border-#707070 transition ease-in-out duration-300 text-center text-white rounded-xl hover:bg-#7f66de hover:border-transparent"
                             >
