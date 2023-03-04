@@ -5,13 +5,14 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Popover, Dialog, Transition } from "@headlessui/react";
 import { Search } from "../Search/Search";
 import Logo from "../../../../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import "./Header.css";
 import LoginModal from "../LoginModal/LoginModal";
 import UserDropdown from "../UserDropdown/UserDropdown";
 import { Avatar } from "antd";
 
 export const Header = () => {
+  const param = useParams();
   const [open, setOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(localStorage.getItem("User"));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,10 +20,11 @@ export const Header = () => {
   const setIsOpen = () => {
     setOpen(false);
   };
+  console.log(param);
 
   return (
     <>
-      <header ref={headerRef} className="bg-transparent z-50">
+      <header ref={headerRef} className="bg-black">
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
           aria-label="Global"
@@ -164,7 +166,7 @@ export const Header = () => {
           }}
           as={Fragment}
         >
-          <Dialog as="div" className="relative z-50">
+          <Dialog as="div" className="relative z-30">
             <Transition.Child
               as={Fragment}
               enter="ease-in-out duration-500"

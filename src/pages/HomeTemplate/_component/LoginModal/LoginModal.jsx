@@ -53,7 +53,7 @@ export default function LoginModal({ open, setIsOpen, setIsLogin }) {
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-50"
+        className="relative z-40"
         initialFocus={cancelButtonRef}
         onClose={setIsOpen}
       >
@@ -116,7 +116,7 @@ export default function LoginModal({ open, setIsOpen, setIsLogin }) {
                             name="taiKhoan"
                             type="text"
                             required
-                            className="block w-full appearance-none rounded-none rounded-t-md border border-#7f66de px-3 py-2 text-#7f66de placeholder-#7f66de focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            className="block relative z-50 w-full appearance-none rounded-none rounded-t-md border border-#7f66de px-3 py-2 text-#7f66de placeholder-#7f66de focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             placeholder="Username"
                           />
                         </div>
@@ -130,7 +130,7 @@ export default function LoginModal({ open, setIsOpen, setIsLogin }) {
                             name="matKhau"
                             type="password"
                             required
-                            className="relative block w-full appearance-none rounded-none rounded-b-md border border-#7f66de px-3 py-2 text-#7f66de placeholder-#7f66de  focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full relative z-50 appearance-none rounded-none rounded-b-md border border-#7f66de px-3 py-2 text-#7f66de placeholder-#7f66de focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             placeholder="Password"
                           />
                         </div>

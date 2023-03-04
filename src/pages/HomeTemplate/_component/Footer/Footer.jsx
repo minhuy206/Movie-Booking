@@ -10,7 +10,7 @@ import Logo from "../../../../assets/logo.png";
 
 export const Footer = ({ ...props }) => {
   return (
-    <footer className="bg-#1d1d1d">
+    <footer className="bg-#1d1d1d mt-10 lg:mt-28">
       <div className="mx-6 py-10">
         <div className="layout pb-10 lg:grid lg:gap-8 hidden justify-between">
           <div className="logo order-first">

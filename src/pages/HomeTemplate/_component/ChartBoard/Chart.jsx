@@ -5,7 +5,7 @@ import "./Chart.css";
 
 export const Chart = ({ top5Movies }) => {
   return (
-    <section className="chart">
+    <section className="chart pt-10 lg:pt-28">
       <div className="m-auto sm:w-5/6 w-11/12">
         <div className="flex justify-between">
           <div className="chartLeft lg:block hidden">

@@ -12,7 +12,7 @@ export const MoviesSlider = ({ movies }) => {
 
   return (
     <section className="showingMovies">
-      <div className="mx-auto sm:w-5/6 w-11/12" style={{ paddingTop: "115px" }}>
+      <div className="mx-auto sm:w-5/6 w-11/12 pt-10 lg:pt-28">
         <h1 className="uppercase text-white text-4xl mb-5">Now Showing</h1>
         <Slider {...settings}>{renderMoviesCard()}</Slider>
       </div>

@@ -1,9 +1,10 @@
 import "./DetailMovie.css";
-import React from "react";
+import React, { useState } from "react";
 import Fresh from "../../../../assets/Certified_Fresh_2018.svg.png";
 import Popcorn from "../../../../assets/212px-Rotten_Tomatoes_positive_audience.svg.png";
 import imdb from "../../../../assets/imdb@._V1_.png";
 import { useNavigate } from "react-router-dom";
+import LoginAlert from "../LoginAlert/LoginAlert";
 
 const actors = [
   {
@@ -66,6 +67,7 @@ const renderCast = () => {
 };
 
 export default function Detail({ movie }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const convertTrailerLink = (trailer) => {
     const index = trailer.indexOf("=");
@@ -81,7 +83,6 @@ export default function Detail({ movie }) {
 
   const handleResizeIframe = (trailer) => {
     const { innerWidth: width } = window;
-    console.log(width);
     if (width > 1536) {
       return (
         <iframe
@@ -249,7 +250,10 @@ export default function Detail({ movie }) {
                   <button
                     className="bookNowBtn text-2xl"
                     onClick={() => {
-                      navigate(`/detail/showtime/${movie.maPhim}`);
+                      if (localStorage.getItem("User")) {
+                        return navigate(`/showtime/${movie.maPhim}`);
+                      }
+                      return setModalIsOpen(true);
                     }}
                   >
                     Book now
@@ -357,7 +361,10 @@ export default function Detail({ movie }) {
                   <button
                     className="bookNowBtn text-2xl mt-3 w-full lg:mt-2 lg:w-auto lg:inline-block md:hidden"
                     onClick={() => {
-                      navigate(`/detail/showtime/${movie.maPhim}`);
+                      if (localStorage.getItem("User")) {
+                        return navigate(`/showtime/${movie.maPhim}`);
+                      }
+                      return setModalIsOpen(true);
                     }}
                   >
                     Book now
@@ -372,6 +379,7 @@ export default function Detail({ movie }) {
           </div>
         </div>
       </section>
+      <LoginAlert open={modalIsOpen} setOpen={setModalIsOpen} />
     </>
   );
 }

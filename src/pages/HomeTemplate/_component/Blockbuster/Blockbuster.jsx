@@ -11,7 +11,7 @@ const Blockbuster = ({ hotMovies }) => {
   };
   return (
     <>
-      <section className="blockbuster">
+      <section className="blockbuster pt-10 lg:pt-28">
         <div className="m-auto sm:w-5/6 w-11/12">
           <h1 className="text-4xl font-bold text-white mb-5 uppercase">
             Blockbusters
