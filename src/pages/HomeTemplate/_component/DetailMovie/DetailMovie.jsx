@@ -4,7 +4,7 @@ import Fresh from "../../../../assets/Certified_Fresh_2018.svg.png";
 import Popcorn from "../../../../assets/212px-Rotten_Tomatoes_positive_audience.svg.png";
 import imdb from "../../../../assets/imdb@._V1_.png";
 import { useNavigate } from "react-router-dom";
-import LoginAlert from "../LoginAlert/LoginAlert";
+import { message } from "antd";
 
 const actors = [
   {
@@ -67,7 +67,6 @@ const renderCast = () => {
 };
 
 export default function Detail({ movie }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const convertTrailerLink = (trailer) => {
     const index = trailer.indexOf("=");
@@ -253,7 +252,9 @@ export default function Detail({ movie }) {
                       if (localStorage.getItem("User")) {
                         return navigate(`/showtime/${movie.maPhim}`);
                       }
-                      return setModalIsOpen(true);
+                      return message.warning(
+                        "Please log in before booking ticket!"
+                      );
                     }}
                   >
                     Book now
@@ -364,7 +365,9 @@ export default function Detail({ movie }) {
                       if (localStorage.getItem("User")) {
                         return navigate(`/showtime/${movie.maPhim}`);
                       }
-                      return setModalIsOpen(true);
+                      return message.warning(
+                        "Please log in before booking ticket!"
+                      );
                     }}
                   >
                     Book now
@@ -372,14 +375,9 @@ export default function Detail({ movie }) {
                 </div>
               </div>
             </div>
-            <div className="photoGallery">
-              <h1 className="text-white text-4xl mt-10">Photo gallery</h1>
-              <div className="photoContainer"></div>
-            </div>
           </div>
         </div>
       </section>
-      <LoginAlert open={modalIsOpen} setOpen={setModalIsOpen} />
     </>
   );
 }
