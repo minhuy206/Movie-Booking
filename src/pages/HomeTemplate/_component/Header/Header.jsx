@@ -83,7 +83,7 @@ export const Header = ({ backgroundImage }) => {
                 to={"movies"}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-#7f66de relative active font-Viga"
+                    ? "text-#7f66de relative navbarActive font-Viga"
                     : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
                 }
               >
@@ -94,7 +94,7 @@ export const Header = ({ backgroundImage }) => {
                 to={"cinemas"}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-#7f66de relative active font-Viga"
+                    ? "text-#7f66de relative navbarActive font-Viga"
                     : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
                 }
               >
@@ -105,7 +105,7 @@ export const Header = ({ backgroundImage }) => {
                 to="offers"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-#7f66de relative active font-Viga"
+                    ? "text-#7f66de relative navbarActive font-Viga"
                     : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
                 }
               >
@@ -259,7 +259,7 @@ export const Header = ({ backgroundImage }) => {
                                 <div className="py-6 space-y-2">
                                   <NavLink
                                     href
-                                    to={"movies"}
+                                    to={"profile"}
                                     className={({ isActive }) =>
                                       isActive
                                         ? "-mx-3 block rounded-lg py-2 px-3 font-semibold font-Viga leading-7 sm:text-base text-xs text-white bg-#7f66de "

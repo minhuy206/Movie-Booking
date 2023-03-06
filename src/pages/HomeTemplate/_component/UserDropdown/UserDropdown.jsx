@@ -27,7 +27,7 @@ export default function UserDropdown({ setIsLogin }) {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "text-center py-2 block px-3 rounded-lg font-semibold leading-7 text-white hover:text-white hover:bg-#7f66de"
+                    ? "text-center py-2 block px-3 rounded-lg font-semibold leading-7 text-white hover:text-white bg-#7f66de"
                     : "text-center py-2 block px-3 rounded-lg font-semibold leading-7 text-white hover:bg-#7f66de hover:text-white"
                 }
               >

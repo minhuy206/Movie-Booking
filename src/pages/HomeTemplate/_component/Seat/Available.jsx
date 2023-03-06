@@ -6,13 +6,18 @@ import {
 import React from "react";
 import { useDispatch } from "react-redux";
 import "./Available.css";
-export default function AvailableSeat({ ghe, type, isChecked }) {
+export default function AvailableSeat({ seat, type, isChecked }) {
   const dispatch = useDispatch();
   const handleOnSelect = (e) => {
-    e.target.checked ? dispatch(selectSeat(ghe)) : dispatch(unselectSeat(ghe));
+    e.target.checked
+      ? dispatch(selectSeat(seat))
+      : dispatch(unselectSeat(seat));
   };
   return (
-    <div className="relative inline-block justify-self-stretch" key={ghe.maGhe}>
+    <div
+      className="relative inline-block justify-self-stretch"
+      key={seat.maGhe}
+    >
       <input
         className={`input text-primary border border-primary rounded-lg w-16 h-16 flex items-center justify-center`}
         type="checkbox"
@@ -22,7 +27,7 @@ export default function AvailableSeat({ ghe, type, isChecked }) {
       <label
         className={`${type} checkmark block text-white text-center text-lg`}
       >
-        {ghe.tenGhe}
+        {seat.tenGhe}
       </label>
     </div>
   );

@@ -31,14 +31,14 @@ const fetchInfoError = (error) => {
 
 // select seat
 
-export const selectSeat = (seat, price) => {
+export const selectSeat = (seat) => {
   return {
     type: types.SELECT__SEAT,
     seat: seat,
     price: seat.giaVe,
   };
 };
-export const unselectSeat = (seat, price) => {
+export const unselectSeat = (seat) => {
   return {
     type: types.UNSELECT__SEAT,
     seat: seat,
@@ -48,18 +48,19 @@ export const unselectSeat = (seat, price) => {
 
 // Booking ticket
 
-export const handleBookingTicket = (ticket) => {
+export const handleBookingTicket = (ticket, message) => {
   return (dispatch) => {
     dispatch(handleBookingTicketRequest());
     api
       .post("QuanLyDatVe/DatVe", ticket)
       .then((result) => {
-        console.log(result);
-        dispatch(handleBookingTicketSuccess(result.data.content));
+        dispatch(handleBookingTicketSuccess());
+        message.success("Processing complete!");
       })
       .catch((error) => {
         dispatch(handleBookingTicketFail(error));
         console.log(error);
+        message.error(error.response.data.content);
       });
   };
 };
@@ -80,5 +81,11 @@ const handleBookingTicketFail = (error) => {
   return {
     type: types.BOOKING__FAIL,
     error: error,
+  };
+};
+
+export const resetTicketRoomReducer = () => {
+  return {
+    type: types.RESET__TICKET__ROOM__REDUCER,
   };
 };

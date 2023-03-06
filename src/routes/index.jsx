@@ -39,6 +39,12 @@ const routes = [
         }),
       },
       {
+        path: "home/detail/:id",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/DetailMovie/DetailMovie");
+        }),
+      },
+      {
         path: "showtime/:id",
         element: lazy(() => {
           return import("../pages/HomeTemplate/Showtime/Showtime");
@@ -50,12 +56,12 @@ const routes = [
           return import("../pages/HomeTemplate/TicketRoom/TicketRoom");
         }),
       },
-      //     {
-      //       path: "movies/addnew",
-      //       element: lazy(() => {
-      //         return import("../pages/AdminTemplate/movies-management/add");
-      //       }),
-      //     },
+      {
+        path: "profile",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/BookingHistory/BookingHistory");
+        }),
+      },
       //     {
       //       path: "movies/edit/:id",
       //       element: lazy(() => {

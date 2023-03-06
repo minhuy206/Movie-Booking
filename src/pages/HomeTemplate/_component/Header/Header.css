@@ -17,7 +17,7 @@ header {
   width: 100%;
 }
 
-.active::after {
+.navbarActive::after {
   content: "";
   height: 2px;
   width: 100%;
@@ -28,6 +28,6 @@ header {
   transition: all ease-in-out 0.3s;
 }
 
-.active:hover {
+.navbarActive:hover {
   color: #7f66de;
 }

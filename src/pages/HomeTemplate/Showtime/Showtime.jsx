@@ -11,7 +11,7 @@ function Showtime() {
   const { showtime } = useSelector((state) => state.showtimeReducer);
   const [activeCinemaIndex, setActiveCinemaIndex] = useState(-1);
   const [cinemas, setCinema] = useState(
-    showtime.heThongRapChieu[0]?.cumRapChieu
+    showtime.heThongRapChieu?.[0].cumRapChieu
   );
   const { id } = useParams();
   const showtimeRef = useRef(null);
@@ -21,7 +21,7 @@ function Showtime() {
 
   useEffect(() => {
     dispatch(fetchShowtime(id));
-    setCinema(showtime.heThongRapChieu[0].cumRapChieu);
+    setCinema(showtime.heThongRapChieu?.[0].cumRapChieu);
   }, []);
 
   const getStartDay = (day) => {
@@ -157,7 +157,7 @@ function Showtime() {
             >
               <h2 className="text-white text-3xl">Select showtime</h2>
               <div className="mt-5">
-                {cinemas.map((cinema) => {
+                {cinemas?.map((cinema) => {
                   return (
                     <div
                       className="showtime rounded-2xl overflow-hidden mt-10"
@@ -257,7 +257,7 @@ function Showtime() {
           <div ref={showtimeRef} className="py-8 border-#c4c4c480 hidden">
             <h2 className="text-white text-3xl">Select showtime</h2>
             <div className="mt-5">
-              {cinemas.map((cinema) => {
+              {cinemas?.map((cinema) => {
                 return (
                   <div
                     className="rounded-2xl overflow-hidden mt-10"
