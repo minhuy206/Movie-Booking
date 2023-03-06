@@ -5,14 +5,13 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Popover, Dialog, Transition } from "@headlessui/react";
 import { Search } from "../Search/Search";
 import Logo from "../../../../assets/logo.png";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import "./Header.css";
 import LoginModal from "../LoginModal/LoginModal";
 import UserDropdown from "../UserDropdown/UserDropdown";
 import { Avatar } from "antd";
 
-export const Header = () => {
-  const param = useParams();
+export const Header = ({ backgroundImage }) => {
   const [open, setOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(localStorage.getItem("User"));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,11 +19,14 @@ export const Header = () => {
   const setIsOpen = () => {
     setOpen(false);
   };
-  console.log(param);
 
   return (
     <>
-      <header ref={headerRef} className="bg-black">
+      <header
+        ref={headerRef}
+        className="bg-transparent"
+        style={backgroundImage}
+      >
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
           aria-label="Global"
@@ -43,9 +45,9 @@ export const Header = () => {
                   <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
-              <NavLink href className="-m-1.5 p-1.5 text-white">
+              <Link to={""} className="-m-1.5 p-1.5 text-white">
                 <img width={50} src={Logo} alt="logo" />
-              </NavLink>
+              </Link>
               <div className="md:hidden">
                 <Avatar
                   className="w-12 h-12"
@@ -56,9 +58,9 @@ export const Header = () => {
           ) : (
             <>
               <div className="flex flex-1 justify-center lg:justify-start lg:w-2/12 md:w-2/12 ">
-                <NavLink href className="-m-1.5 p-1.5 text-white">
+                <Link to={""} className="-m-1.5 p-1.5 text-white">
                   <img width={50} src={Logo} alt="logo" />
-                </NavLink>
+                </Link>
               </div>
               <div className="flex absolute md:hidden">
                 <button
@@ -76,45 +78,39 @@ export const Header = () => {
           )}
           <Popover.Group className="hidden lg:w-7/12 md:gap-x-4 md:w-6/12 md:flex">
             <div className="flex w-full lg:justify-evenly lg:w-1/2 md:justify-evenly">
-              <a
+              <NavLink
                 style={{ lineHeight: "40px" }}
                 to={"movies"}
-                href
-                // className={({ isActive }) =>
-                //   isActive
-                //     ? "navlinkNavbar text-sm font-semibold leading-6 text-white relative navlinkNavbarActive"
-                //     : "navlinkNavbar text-sm font-semibold leading-6 text-white relative"
-                // }
-                className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out active link font-Viga"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-#7f66de relative active font-Viga"
+                    : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
+                }
               >
                 Movies
-              </a>
-              <a
+              </NavLink>
+              <NavLink
                 style={{ lineHeight: "40px" }}
                 to={"cinemas"}
-                href
-                // className={({ isActive }) =>
-                //   isActive
-                //     ? "navlinkNavbar text-sm font-semibold leading-6 text-white relative navlinkNavbarActive"
-                //     : "navlinkNavbar text-sm font-semibold leading-6 text-white relative"
-                // }
-                className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-#7f66de relative active font-Viga"
+                    : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
+                }
               >
                 Cinemas
-              </a>
-              <a
+              </NavLink>
+              <NavLink
                 style={{ lineHeight: "40px" }}
                 to="offers"
-                href
-                // className={({ isActive }) =>
-                //   isActive
-                //     ? "navlinkNavbar text-sm font-semibold leading-6 text-white relative navlinkNavbarActive"
-                //     : "navlinkNavbar text-sm font-semibold leading-6 text-white relative"
-                // }
-                className="text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-#7f66de relative active font-Viga"
+                    : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
+                }
               >
                 Offers
-              </a>
+              </NavLink>
             </div>
 
             <div className="hidden lg:flex lg:w-1/2 lg:justify-end">

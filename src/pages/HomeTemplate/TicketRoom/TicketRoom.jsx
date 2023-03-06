@@ -17,7 +17,6 @@ import {
 const TicketRoom = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const param = useParams();
   const { loading, info, selectingSeat, totalPrice } = useSelector(
     (state) => state.ticketRoomReducer
   );
@@ -62,8 +61,9 @@ const TicketRoom = () => {
         "Friday",
         "Saturday",
       ];
-
-      const date = new Date(day);
+      const month = day.slice(3, 6);
+      const dayAndYear = day.slice(0, 3) + day.slice(6);
+      const date = new Date(month + dayAndYear);
       const dayOfWeek = weekday[date.getDay()];
       return dayOfWeek;
     }
@@ -106,7 +106,10 @@ const TicketRoom = () => {
       title: "Selecting seats",
       content: (
         <>
-          <div className="content flex mt-10 justify-between">
+          <div
+            className="flex mt-10 justify-between"
+            style={{ minHeight: "70vh" }}
+          >
             <div className="selectSeat rounded-3xl xl:p-10 lg:p-5 p-5 bg-#3d3d3d">
               <div className="h-10 rounded-2xl bg-#707070 m-auto">
                 <p className="text-primary text-center leading-10 text-xl">
@@ -155,7 +158,7 @@ const TicketRoom = () => {
                 </div>
               </div>
             </div>
-            <div className="w-1/3 rounded-3xl bg-#3d3d3d hidden lg:block">
+            <div className="selecting rounded-3xl bg-#3d3d3d hidden lg:block">
               <div className="w-full p-5 border-b-2 border-primary">
                 <h6 className="text-xl text-white">Selecting</h6>
               </div>
@@ -243,7 +246,10 @@ const TicketRoom = () => {
     {
       title: "Payment",
       content: (
-        <div className="content flex mt-10 justify-between">
+        <div
+          className="flex mt-10 justify-between"
+          style={{ minHeight: "70vh" }}
+        >
           <div className="payment rounded-3xl bg-#3d3d3d">
             <div className="px-8 py-5 border-b border-#707070">
               <div className="flex justify-between items-center">
@@ -304,12 +310,13 @@ const TicketRoom = () => {
                   className="next px-8 py-2"
                   onClick={() => {
                     next();
-                    // dispatch(
-                    //   handleBookingTicket({
-                    //     maLichChieu: param.maLichChieu,
-                    //     danhSachGhe: selectingSeat,
-                    //   })
-                    // );
+                    dispatch(
+                      handleBookingTicket({
+                        maLichChieu: maLichChieu,
+                        danhSachGhe: selectingSeat,
+                      })
+                    );
+
                     message.success("Processing complete!");
                   }}
                 >
@@ -318,7 +325,7 @@ const TicketRoom = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/3 rounded-3xl bg-#3d3d3d hidden lg:flex flex-col">
+          <div className="bookingSummary rounded-3xl bg-#3d3d3d hidden lg:flex flex-col">
             <div className="w-full p-5 border-b-2 border-primary">
               <h6 className="text-xl text-white">Booking summary</h6>
             </div>
@@ -393,8 +400,11 @@ const TicketRoom = () => {
     {
       title: "Payment successful",
       content: (
-        <div className="content flex mt-10 justify-between">
-          <div className="payment rounded-3xl bg-#3d3d3d">
+        <div
+          className="flex mt-10 justify-between"
+          style={{ minHeight: "70vh" }}
+        >
+          <div className="paymentSuccessful hidden sm:block rounded-3xl bg-#3d3d3d">
             <div className="px-8 py-5 border-b border-#707070">
               <p className="text-white text-xl font-bold">
                 Congratulations, you have completed your booking!
@@ -444,7 +454,7 @@ const TicketRoom = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/3 rounded-3xl hidden lg:flex flex-col overflow-hidden">
+          <div className="eTickets flex sm:hidden rounded-3xl lg:flex flex-col overflow-hidden">
             <div className="rounded-3xl overflow-hidden">
               <div
                 className="w-full px-10 py-5 border-b-2 border-primary text-center"
@@ -461,50 +471,55 @@ const TicketRoom = () => {
                   {info.thongTinPhim.tenPhim}
                 </p>
               </div>
-              <div className="flex bg-#707070 flex-col justify-between flex-1">
+              <div className="flex bg-#3d3d3d flex-col justify-between flex-1">
                 <div className="px-10 py-5">
                   <div className="flex mb-2">
-                    <p className="text-primary text-base w-1/3">Time</p>
-                    <p className="text-white text-base">
-                      {info && info?.thongTinPhim.gioChieu},{" "}
+                    <p className="text-primary text-xs w-5/12">Time</p>
+                    <p className="text-white text-xs">
+                      {info && info?.thongTinPhim.gioChieu}, <br />
                       {getDayOfWeek(info?.thongTinPhim.ngayChieu)},{" "}
                       {getMonth(
                         splitNgayChieu(info?.thongTinPhim.ngayChieu)[1] - 1
-                      )}{" "}
+                      ).slice(0, 3)}{" "}
                       {splitNgayChieu(info?.thongTinPhim.ngayChieu)[0]},{" "}
+                      {splitNgayChieu(info?.thongTinPhim.ngayChieu)[2]}
                     </p>
                   </div>
                   <div className="flex mb-2">
-                    <p className="text-primary text-base w-1/3">Cinema</p>
+                    <p className="text-primary text-xs w-5/12">Cinema</p>
                     <div>
-                      <p className="text-white text-base">
+                      <p className="text-white text-xs">
                         {info.thongTinPhim.tenCumRap}
                       </p>
                       <p className="text-primary opacity-75 text-xs">
-                        {info.thongTinPhim.diaChi}
+                        {info.thongTinPhim.diaChi.length > 10
+                          ? info.thongTinPhim.diaChi.substring(0, 10) + "..."
+                          : info.thongTinPhim.diaChi}
                       </p>
                     </div>
                   </div>
+
                   <div className="flex mb-2">
-                    <p className="text-primary text-base w-1/3">Room</p>
-                    <p className="text-white text-base">
+                    <p className="text-primary text-xs w-5/12">Room</p>
+                    <p className="text-white text-xs">
                       {info.thongTinPhim.tenRap}
                     </p>
                   </div>
                   <div className="flex mb-2">
-                    <p className="text-primary text-base w-1/3">Seat</p>
-                    <p className="text-white text-base">
+                    <p className="text-primary text-xs w-5/12">Seat</p>
+                    <p className="text-white text-xs">
                       {selectingSeat.map((seat) => seat.tenGhe)}
                     </p>
                   </div>
                   <div className="flex mb-2">
-                    <p className="text-primary text-base w-1/3">Total paid</p>
-                    <p className="text-white text-base">{totalPrice}</p>
+                    <p className="text-primary text-xs w-5/12">Total paid</p>
+                    <p className="text-white text-xs">{totalPrice}VND</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="rounded-3xl p-10 bg-#707070">
+
+            <div className="rounded-3xl p-10 bg-#3d3d3d">
               <img
                 src="https://static.vecteezy.com/system/resources/previews/001/199/360/original/barcode-png.png"
                 alt=""
@@ -546,7 +561,7 @@ const TicketRoom = () => {
     );
   }
   return (
-    <section className="mt-16 relative">
+    <section className="py-16 relative">
       <div className="m-auto lg:w-5/6 w-11/12">
         <div className="flex justify-between h-48">
           <div className="lg:flex hidden px-2 py-5 flexLeft bg-#3d3d3d rounded-xl overflow-hidden">

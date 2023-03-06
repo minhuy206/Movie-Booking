@@ -21,7 +21,19 @@ const routes = [
         }),
       },
       {
+        path: "movies",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/Home");
+        }),
+      },
+      {
         path: "detail/:id",
+        element: lazy(() => {
+          return import("../pages/HomeTemplate/DetailMovie/DetailMovie");
+        }),
+      },
+      {
+        path: "movies/detail/:id",
         element: lazy(() => {
           return import("../pages/HomeTemplate/DetailMovie/DetailMovie");
         }),
