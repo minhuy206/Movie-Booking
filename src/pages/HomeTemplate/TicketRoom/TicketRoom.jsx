@@ -519,12 +519,19 @@ const TicketRoom = () => {
                   <div className="flex mb-2">
                     <p className="text-primary text-xs w-5/12">Seat</p>
                     <p className="text-white text-xs">
-                      {selectingSeat.map((seat) => seat.tenGhe)}
+                      {selectingSeat.map((seat, index) => {
+                        if (index + 1 === selectingSeat.length) {
+                          return seat.tenGhe;
+                        }
+                        return seat.tenGhe + ", ";
+                      })}
                     </p>
                   </div>
                   <div className="flex mb-2">
                     <p className="text-primary text-xs w-5/12">Total paid</p>
-                    <p className="text-white text-xs">{totalPrice}VND</p>
+                    <p className="text-white text-xs">
+                      {totalPrice.toLocaleString()}VND
+                    </p>
                   </div>
                 </div>
                 <hr className="border-2 border-#707070 border-dashed" />
