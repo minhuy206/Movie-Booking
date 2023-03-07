@@ -213,7 +213,9 @@ const TicketRoom = () => {
                     className="checkoutBtn w-full text-xl py-3"
                     onClick={() => {
                       if (selectingSeat.length === 0) {
-                        return message.error("Please select seat!");
+                        return message.error(
+                          "Please select seat before checkout!"
+                        );
                       }
                       return next();
                     }}
@@ -238,7 +240,9 @@ const TicketRoom = () => {
                 className="checkoutBtn w-full text-xl py-3"
                 onClick={() => {
                   if (selectingSeat.length === 0) {
-                    return message.error("Please select seat!");
+                    return message.error(
+                      "Please select seats before checkout!"
+                    );
                   }
                   return next();
                 }}
