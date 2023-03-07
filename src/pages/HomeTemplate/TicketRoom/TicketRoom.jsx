@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import AvailableSeat from "../_component/Seat/Available";
 import UnavailableSeat from "../_component/Seat/Unavailable";
-import { fetchInfo, handleBookingTicket } from "./duck/action";
+import {
+  fetchInfo,
+  handleBookingTicket,
+  resetTicketRoomReducer,
+} from "./duck/action";
 import { LoadingOutlined } from "@ant-design/icons";
 import "./TicketRoom.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -117,14 +121,15 @@ const TicketRoom = () => {
                 </p>
               </div>
               <div className="mt-10 grid grid-cols-10 gap-2 m-auto">
-                {info?.danhSachGhe.map((ghe) =>
-                  ghe.daDat ? (
-                    <UnavailableSeat />
+                {info?.danhSachGhe.map((seat) =>
+                  seat.daDat ? (
+                    <UnavailableSeat key={seat.maGhe} />
                   ) : (
                     <AvailableSeat
-                      isChecked={checkIsChecked(ghe.maGhe)}
-                      ghe={ghe}
-                      type={ghe.loaiGhe === "Thuong" ? "primary" : "VIP"}
+                      key={seat.maGhe}
+                      isChecked={checkIsChecked(seat.maGhe)}
+                      seat={seat}
+                      type={seat.loaiGhe === "Thuong" ? "primary" : "VIP"}
                     />
                   )
                 )}
@@ -140,17 +145,13 @@ const TicketRoom = () => {
                   <div className="selectingSeat justify-center flex items-center bg-#7f66de">
                     <p className="text-lg text-white">01</p>
                   </div>
-                  <p className="text-primary mt-2 text-base">
-                    Selecting primary seat
-                  </p>
+                  <p className="text-primary mt-2 text-base">Primary</p>
                 </div>
                 <div className="flex flex-col justify-between items-center">
                   <div className="selectingSeat justify-center flex items-center bg-#c8235d">
                     <p className="text-lg text-white">01</p>
                   </div>
-                  <p className="text-primary mt-2 text-base">
-                    Selecting VIP seat
-                  </p>
+                  <p className="text-primary mt-2 text-base">VIP</p>
                 </div>
                 <div className="flex flex-col justify-between items-center">
                   <div className="unavailableSeat bg-#707070"></div>
@@ -159,16 +160,19 @@ const TicketRoom = () => {
               </div>
             </div>
             <div className="selecting rounded-3xl bg-#3d3d3d hidden lg:block">
-              <div className="w-full p-5 border-b-2 border-primary">
+              <div className="w-full p-5 border-b-2 border-#707070">
                 <h6 className="text-xl text-white">Selecting</h6>
               </div>
               {selectingSeat.length === 0 ? (
                 ""
               ) : (
-                <div className="pt-2 px-2 border-b-2 border-primary">
+                <div className="pt-2 px-2 border-b-2 border-#707070">
                   {selectingSeat.map((seat) => {
                     return (
-                      <div className="flex items-center mb-2 p-4 rounded-xl bg-#707070 relative">
+                      <div
+                        className="flex items-center mb-2 p-4 rounded-xl bg-#707070 relative"
+                        key={seat.maGhe}
+                      >
                         {seat.loaiGhe === "Thuong" ? (
                           <div className="bg-#7f66de rounded-2xl overflow-hidden w-16 h-16 flex items-center">
                             <p className="text-white text-2xl text-center w-full">
@@ -209,7 +213,7 @@ const TicketRoom = () => {
                     className="checkoutBtn w-full text-xl py-3"
                     onClick={() => {
                       if (selectingSeat.length === 0) {
-                        return alert("Vui long chon ghe");
+                        return message.error("Please select seat!");
                       }
                       return next();
                     }}
@@ -233,7 +237,10 @@ const TicketRoom = () => {
               <button
                 className="checkoutBtn w-full text-xl py-3"
                 onClick={() => {
-                  next();
+                  if (selectingSeat.length === 0) {
+                    return message.error("Please select seat!");
+                  }
+                  return next();
                 }}
               >
                 Checkout
@@ -311,13 +318,14 @@ const TicketRoom = () => {
                   onClick={() => {
                     next();
                     dispatch(
-                      handleBookingTicket({
-                        maLichChieu: maLichChieu,
-                        danhSachGhe: selectingSeat,
-                      })
+                      handleBookingTicket(
+                        {
+                          maLichChieu: maLichChieu,
+                          danhSachVe: selectingSeat,
+                        },
+                        message
+                      )
                     );
-
-                    message.success("Processing complete!");
                   }}
                 >
                   Pay
@@ -326,23 +334,23 @@ const TicketRoom = () => {
             </div>
           </div>
           <div className="bookingSummary rounded-3xl bg-#3d3d3d hidden lg:flex flex-col">
-            <div className="w-full p-5 border-b-2 border-primary">
+            <div className="w-full p-5 border-b-2 border-#707070">
               <h6 className="text-xl text-white">Booking summary</h6>
             </div>
             <div className="flex flex-col justify-between flex-1">
               <div>
-                <div className="p-5 border-b-2 border-primary flex justify-between items-center">
+                <div className="p-5 border-b-2 border-#707070 flex justify-between items-center">
                   <div className="w-2/3">
                     {selectingSeat.map((seat, index) => {
                       if (index + 1 === selectingSeat.length) {
                         return (
-                          <span className="text-white text-lg">
+                          <span className="text-white text-lg" key={index}>
                             Seat {seat.tenGhe}
                           </span>
                         );
                       }
                       return (
-                        <span className="text-white text-lg">
+                        <span className="text-white text-lg" key={index}>
                           Seat {seat.tenGhe},{" "}
                         </span>
                       );
@@ -384,7 +392,7 @@ const TicketRoom = () => {
                   )}
                 </div>
               </div>
-              <div className="flex justify-between mt-2 p-5 border-t-2 border-primary">
+              <div className="flex justify-between mt-2 p-5 border-t-2 border-#707070">
                 <p className="text-primary text-base ">
                   {selectingSeat.length} items
                 </p>
@@ -448,7 +456,10 @@ const TicketRoom = () => {
                 </div>
               </div>
               <div className="px-8">
-                <button className="back mr-2 px-8 py-2" onClick={() => prev()}>
+                <button
+                  className="back mr-2 px-8 py-2"
+                  onClick={() => navigate("/home")}
+                >
                   Back to home page
                 </button>
               </div>
@@ -457,7 +468,7 @@ const TicketRoom = () => {
           <div className="eTickets flex sm:hidden rounded-3xl lg:flex flex-col overflow-hidden">
             <div className="rounded-3xl overflow-hidden">
               <div
-                className="w-full px-10 py-5 border-b-2 border-primary text-center"
+                className="w-full px-10 py-5 border-b-2 border-#707070 text-center"
                 style={{ backgroundColor: "#1a152d" }}
               >
                 <p className="text-xl text-white font-bold">E-tickets</p>
@@ -508,22 +519,29 @@ const TicketRoom = () => {
                   <div className="flex mb-2">
                     <p className="text-primary text-xs w-5/12">Seat</p>
                     <p className="text-white text-xs">
-                      {selectingSeat.map((seat) => seat.tenGhe)}
+                      {selectingSeat.map((seat, index) => {
+                        if (index + 1 === selectingSeat.length) {
+                          return seat.tenGhe;
+                        }
+                        return seat.tenGhe + ", ";
+                      })}
                     </p>
                   </div>
                   <div className="flex mb-2">
                     <p className="text-primary text-xs w-5/12">Total paid</p>
-                    <p className="text-white text-xs">{totalPrice}VND</p>
+                    <p className="text-white text-xs">
+                      {totalPrice.toLocaleString()}VND
+                    </p>
                   </div>
                 </div>
+                <hr className="border-2 border-#707070 border-dashed" />
+                <div className="p-10 bg-#3d3d3d">
+                  <img
+                    src="https://static.vecteezy.com/system/resources/previews/001/199/360/original/barcode-png.png"
+                    alt=""
+                  />
+                </div>
               </div>
-            </div>
-
-            <div className="rounded-3xl p-10 bg-#3d3d3d">
-              <img
-                src="https://static.vecteezy.com/system/resources/previews/001/199/360/original/barcode-png.png"
-                alt=""
-              />
             </div>
           </div>
         </div>
@@ -538,16 +556,17 @@ const TicketRoom = () => {
 
   useEffect(() => {
     dispatch(fetchInfo(maLichChieu));
-    console.log("run");
     return () => {
-      console.log(123);
+      dispatch(resetTicketRoomReducer());
     };
   }, [maLichChieu]);
 
   if (loading) {
     return (
       <Spin
+        className="bg-#1d1d1d"
         style={{
+          width: "100%",
           position: "absolute",
           height: "100vh",
           top: "50%",

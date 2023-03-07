@@ -11,7 +11,9 @@ export const Search = ({
 }) => {
   return (
     <Input
-      className={`search bg-${backgroundColor} ${[...tailwindClasses]}`}
+      className={`search bg-${backgroundColor} ${[...tailwindClasses].join(
+        " "
+      )}`}
       placeholder={placeholder}
       prefix={icon}
       {...props}

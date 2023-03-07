@@ -10,19 +10,19 @@ import { Button } from "../button/Button";
 
 export const Carousel = ({ sliders, ...props }) => {
   function NextArrow(props) {
-    const { className, onClick, chilren } = props;
+    const { className, onClick, children } = props;
     return (
       <div className={className} onClick={onClick}>
-        {chilren}
+        {children}
       </div>
     );
   }
 
   function PrevArrow(props) {
-    const { className, onClick, chilren } = props;
+    const { className, onClick, children } = props;
     return (
       <div className={className} onClick={onClick}>
-        {chilren}
+        {children}
       </div>
     );
   }
@@ -33,17 +33,19 @@ export const Carousel = ({ sliders, ...props }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
-    // autoplay: true,
+    autoplay: true,
     speed: 1000,
     autoplaySpeed: 5000,
     nextArrow: (
       <NextArrow
-        chilren={<FontAwesomeIcon icon={faChevronRight} className="text-2xl" />}
+        children={
+          <FontAwesomeIcon icon={faChevronRight} className="text-2xl" />
+        }
       />
     ),
     prevArrow: (
       <PrevArrow
-        chilren={<FontAwesomeIcon icon={faChevronLeft} className="text-2xl" />}
+        children={<FontAwesomeIcon icon={faChevronLeft} className="text-2xl" />}
       />
     ),
   };
@@ -75,7 +77,7 @@ export const Carousel = ({ sliders, ...props }) => {
                 voluptatem, reprehenderit adipisci laborum!
               </p>
             </div>
-            <div className="carouselContent w-full absolute md:hidden flex flex-col items-center justify-around left-1/2 absolute -translate-x-1/2 ">
+            <div className="carouselContent w-full absolute md:hidden flex flex-col items-center justify-around left-1/2 -translate-x-1/2 ">
               <div className="left-1/2 md:hidden block text-center desc">
                 <p className="text-primary text-lg">
                   Fantasy | 1 hour 50 minutes | English

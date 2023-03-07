@@ -89,7 +89,8 @@ export const Top3 = ({ top5Movies }) => {
             <div
               className="hoverOverplay"
               onClick={() => {
-                console.log(123);
+                setOpen1(true);
+                setTrailer(top5Movies[1].trailer);
               }}
             >
               <FontAwesomeIcon

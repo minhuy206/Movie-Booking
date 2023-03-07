@@ -52,6 +52,11 @@ const ticketRoomReducer = (state = initialState, action) => {
       state.loading = false;
       state.error = action.error;
       return { ...state };
+    case types.RESET__TICKET__ROOM__REDUCER:
+      state.loading = true;
+      state.selectingSeat = [];
+      state.totalPrice = 0;
+      return { ...state };
     default:
       return { ...state };
   }

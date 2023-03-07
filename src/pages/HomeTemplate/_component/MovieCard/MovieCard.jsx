@@ -48,7 +48,7 @@ export const Card = ({ movie, ...prop }) => {
           <div
             className="cardImgOverplay"
             onClick={() => {
-              console.log(123);
+              setOpen(true);
             }}
           >
             <FontAwesomeIcon

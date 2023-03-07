@@ -5,7 +5,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Popover, Dialog, Transition } from "@headlessui/react";
 import { Search } from "../Search/Search";
 import Logo from "../../../../assets/logo.png";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import LoginModal from "../LoginModal/LoginModal";
 import UserDropdown from "../UserDropdown/UserDropdown";
@@ -83,7 +83,7 @@ export const Header = ({ backgroundImage }) => {
                 to={"movies"}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-#7f66de relative active font-Viga"
+                    ? "text-#7f66de relative navbarActive font-Viga"
                     : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
                 }
               >
@@ -94,7 +94,7 @@ export const Header = ({ backgroundImage }) => {
                 to={"cinemas"}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-#7f66de relative active font-Viga"
+                    ? "text-#7f66de relative navbarActive font-Viga"
                     : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
                 }
               >
@@ -105,7 +105,7 @@ export const Header = ({ backgroundImage }) => {
                 to="offers"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-#7f66de relative active font-Viga"
+                    ? "text-#7f66de relative navbarActive font-Viga"
                     : "text-white relative hover:text-#7f66de duration-300 transition ease-in-out link font-Viga"
                 }
               >
@@ -124,7 +124,7 @@ export const Header = ({ backgroundImage }) => {
           </Popover.Group>
           {isLogin ? (
             <div className="-space-x-1 hidden lg:w-3/12 items-center md:flex md:justify-end md:w-4/12">
-              <p className="text-white mr-5 text-lg">
+              <p className="text-white mr-5 text-lg font-Viga">
                 Hello, {isLogin && JSON.parse(isLogin).hoTen}
               </p>
               <UserDropdown setIsLogin={setIsLogin} />
@@ -136,12 +136,9 @@ export const Header = ({ backgroundImage }) => {
                   Don't have account yet?
                 </p>
 
-                <a
-                  href
-                  className="signUpText text-right text-xs font-light text-primary hover:text-#7f66de hover:underline transition duration-150 ease-in-out"
-                >
+                <NavLink className="signUpText text-right text-xs font-light text-primary hover:text-#7f66de hover:underline transition duration-150 ease-in-out">
                   Please sign up here!
-                </a>
+                </NavLink>
               </div>
               <Button
                 label={<p className="text-sm font-bold leading-6">LOG IN</p>}
@@ -213,14 +210,15 @@ export const Header = ({ backgroundImage }) => {
                       <div className="flex h-full flex-col overflow-y-scroll bg-#1d1d1d py-6 shadow-xl">
                         <div className="px-4 sm:px-6">
                           <Dialog.Title className="text-white sm:text-base text-xs -m-1.5 p-1.5">
-                            Movie Project
+                            <p className="font-Viga">
+                              Hello, {isLogin && JSON.parse(isLogin).hoTen}
+                            </p>
                           </Dialog.Title>
                         </div>
                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
                           <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
                               <NavLink
-                                href
                                 to={"movies"}
                                 className={({ isActive }) =>
                                   isActive
@@ -231,7 +229,6 @@ export const Header = ({ backgroundImage }) => {
                                 Movies
                               </NavLink>
                               <NavLink
-                                href
                                 to={"cinemas"}
                                 className={({ isActive }) =>
                                   isActive
@@ -242,7 +239,6 @@ export const Header = ({ backgroundImage }) => {
                                 Cinemas
                               </NavLink>
                               <NavLink
-                                href
                                 to={"offers"}
                                 className={({ isActive }) =>
                                   isActive
@@ -258,8 +254,7 @@ export const Header = ({ backgroundImage }) => {
                               <>
                                 <div className="py-6 space-y-2">
                                   <NavLink
-                                    href
-                                    to={"movies"}
+                                    to={"profile"}
                                     className={({ isActive }) =>
                                       isActive
                                         ? "-mx-3 block rounded-lg py-2 px-3 font-semibold font-Viga leading-7 sm:text-base text-xs text-white bg-#7f66de "
@@ -297,10 +292,7 @@ export const Header = ({ backgroundImage }) => {
                                     Don't have account yet?
                                   </p>
 
-                                  <NavLink
-                                    href
-                                    className="signUpText text-right text-xs font-light text-primary hover:text-#7f66de hover:underline transition duration-150 ease-in-out"
-                                  >
+                                  <NavLink className="signUpText text-right text-xs font-light text-primary hover:text-#7f66de hover:underline transition duration-150 ease-in-out">
                                     Please sign up here!
                                   </NavLink>
                                 </div>
