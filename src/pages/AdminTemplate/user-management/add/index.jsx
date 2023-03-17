@@ -116,9 +116,7 @@ export default function AddUser() {
         </Form.Item>
         <Form.Item label="Select">
           <Select
-            onChange={() => {
-              handleSelect("maLoaiNguoiDung");
-            }}
+            onChange={handleSelect("maLoaiNguoiDung")}
             defaultValue="QuanTri"
           >
             <Select.Option value="QuanTri">Quản trị</Select.Option>
