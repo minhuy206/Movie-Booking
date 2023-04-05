@@ -32,13 +32,13 @@ export const Top3 = ({ top5Movies }) => {
       <div className="top3Content md:flex justify-between h-full hidden">
         <div className="hidden rounded-2xl lg:block md:block top1Item">
           <img
-            src={top5Movies[0].hinhAnh}
-            alt={top5Movies[0].tenPhim}
+            src={top5Movies[0]?.hinhAnh}
+            alt={top5Movies[0]?.tenPhim}
             className="h-full w-full object-cover object-center"
           />
           <div className="top1Score absolute text-center">
             <h6 className="text-white text-sm font-medium inline">
-              {top5Movies[0].danhGia}
+              {top5Movies[0]?.danhGia}
             </h6>
             <span className="text-primary text-xs">/10</span>
             <span>⭐️</span>
@@ -48,7 +48,7 @@ export const Top3 = ({ top5Movies }) => {
               01
             </h2>
             <h2 className="uppercase text-white text-2xl mt-4">
-              {top5Movies[0].tenPhim}
+              {top5Movies[0]?.tenPhim}
             </h2>
           </div>
           <div className="hoverOverplay">
@@ -58,7 +58,7 @@ export const Top3 = ({ top5Movies }) => {
               className="text-primary hover:opacity-50 transition duration-300 ease-in"
               onClick={() => {
                 setOpen(true);
-                setTrailer(top5Movies[0].trailer);
+                setTrailer(top5Movies[0]?.trailer);
               }}
             />
           </div>
@@ -67,13 +67,13 @@ export const Top3 = ({ top5Movies }) => {
         <div className="top23ItemContainer">
           <div className="rounded-2xl top2Item">
             <img
-              src={top5Movies[1].hinhAnh}
-              alt={top5Movies[1].tenPhim}
+              src={top5Movies[1]?.hinhAnh}
+              alt={top5Movies[1]?.tenPhim}
               className="h-full w-full"
             />
             <div className="top2Score">
               <h6 className="text-white text-sm font-medium inline">
-                {top5Movies[1].danhGia}
+                {top5Movies[1]?.danhGia}
               </h6>
               <span className="text-primary text-xs">/10</span>
               <span>⭐️</span>
@@ -83,14 +83,14 @@ export const Top3 = ({ top5Movies }) => {
                 02
               </h2>
               <h2 className="uppercase text-white text-xl xl:text-2xl">
-                {top5Movies[1].tenPhim}
+                {top5Movies[1]?.tenPhim}
               </h2>
             </div>
             <div
               className="hoverOverplay"
               onClick={() => {
                 setOpen1(true);
-                setTrailer(top5Movies[1].trailer);
+                setTrailer(top5Movies[1]?.trailer);
               }}
             >
               <FontAwesomeIcon
@@ -99,7 +99,7 @@ export const Top3 = ({ top5Movies }) => {
                 className="text-primary hover:opacity-50 transition duration-300 ease-in"
                 onClick={() => {
                   setOpen1(true);
-                  setTrailer(top5Movies[1].trailer);
+                  setTrailer(top5Movies[1]?.trailer);
                 }}
               />
             </div>
@@ -111,13 +111,13 @@ export const Top3 = ({ top5Movies }) => {
           </div>
           <div className="rounded-2xl top3Item">
             <img
-              src={top5Movies[2].hinhAnh}
-              alt={top5Movies[2].tenPhim}
+              src={top5Movies[2]?.hinhAnh}
+              alt={top5Movies[2]?.tenPhim}
               className="h-full w-full"
             />
             <div className="top3Score absolute text-center">
               <h6 className="text-white text-sm font-medium inline">
-                {top5Movies[2].danhGia}
+                {top5Movies[2]?.danhGia}
               </h6>
               <span className="text-primary text-xs">/10</span>
               <span>⭐️</span>
@@ -127,7 +127,7 @@ export const Top3 = ({ top5Movies }) => {
                 03
               </h2>
               <h2 className="uppercase text-white text-xl xl:text-2xl">
-                {top5Movies[2].tenPhim}
+                {top5Movies[2]?.tenPhim}
               </h2>
             </div>
             <div className="hoverOverplay">
@@ -137,7 +137,7 @@ export const Top3 = ({ top5Movies }) => {
                 className="text-primary hover:opacity-50 transition duration-300 ease-in"
                 onClick={() => {
                   setOpen2(true);
-                  setTrailer(top5Movies[2].trailer);
+                  setTrailer(top5Movies[2]?.trailer);
                 }}
               />
             </div>
