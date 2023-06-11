@@ -5,8 +5,8 @@ import settings from "./slideSettings.json";
 
 const Blockbuster = ({ hotMovies }) => {
   const renderBlockBuster = () => {
-    return hotMovies.map((movie) => {
-      return <BlockbusterCard key={movie.maPhim} movie={movie} />;
+    return hotMovies?.map((movie) => {
+      return <BlockbusterCard key={movie?.maPhim} movie={movie} />;
     });
   };
   return (

@@ -1,5 +1,4 @@
 import "./DetailMovie.css";
-import React, { useState } from "react";
 import Fresh from "../../../../assets/Certified_Fresh_2018.svg.png";
 import Popcorn from "../../../../assets/212px-Rotten_Tomatoes_positive_audience.svg.png";
 import imdb from "../../../../assets/imdb@._V1_.png";
@@ -69,9 +68,9 @@ const renderCast = () => {
 export default function Detail({ movie }) {
   const navigate = useNavigate();
   const convertTrailerLink = (trailer) => {
-    const index = trailer.indexOf("=");
+    const index = trailer?.indexOf("=");
     if (index !== -1) {
-      const id = trailer.slice(index + 1);
+      const id = trailer?.slice(index + 1);
       return "https://www.youtube.com/embed/" + id;
     }
     return movie.trailer.replace(
@@ -144,18 +143,18 @@ export default function Detail({ movie }) {
             <div className="w-1/3 overflow-hidden rounded-lg">
               <img
                 className="w-full h-full"
-                src={movie.hinhAnh}
-                alt={movie.tenPhim}
+                src={movie?.hinhAnh}
+                alt={movie?.tenPhim}
               />
             </div>
             <div className="flex w-2/3 pl-12 flex-col">
               <div className="flex items-end">
                 <h2 className="text-white text-4xl uppercase">
-                  {movie.tenPhim}
+                  {movie?.tenPhim}
                 </h2>
               </div>
               <div className="pt-5">
-                <p className="text-white text-base font-thin">{movie.moTa}</p>
+                <p className="text-white text-base font-thin">{movie?.moTa}</p>
               </div>
             </div>
           </div>
@@ -165,19 +164,19 @@ export default function Detail({ movie }) {
           >
             <img
               className="movieImg w-full bg-cover h-full"
-              src={movie.hinhAnh}
-              alt={movie.tenPhim}
+              src={movie?.hinhAnh}
+              alt={movie?.tenPhim}
             />
           </div>
           <div className="p-5 lg:p-0">
             <div className="flex lg:hidden flex-col">
               <div className="h-1/3 flex items-end">
                 <h2 className="text-white text-4xl uppercase">
-                  {movie.tenPhim}
+                  {movie?.tenPhim}
                 </h2>
               </div>
               <div className="h-2/3 pt-5">
-                <p className="text-white text-base font-thin">{movie.moTa}</p>
+                <p className="text-white text-base font-thin">{movie?.moTa}</p>
               </div>
             </div>
             <div className="flex lg:flex-row flex-col lg:mt-10 mt-5">
@@ -213,7 +212,7 @@ export default function Detail({ movie }) {
                         <div className="ml-1">
                           <p className="text-white text-sm font-thin">
                             <span className="text-white font-bold">
-                              {movie.danhGia}
+                              {movie?.danhGia}
                             </span>
                             <span className="text-primary whitespace-nowrap">
                               /10⭐️
@@ -250,7 +249,7 @@ export default function Detail({ movie }) {
                     className="bookNowBtn text-2xl"
                     onClick={() => {
                       if (localStorage.getItem("User")) {
-                        return navigate(`/showtime/${movie.maPhim}`);
+                        return navigate(`/showtime/${movie?.maPhim}`);
                       }
                       return message.warning(
                         "Please log in before booking ticket!"
@@ -267,7 +266,7 @@ export default function Detail({ movie }) {
                   <h1 className="block lg:hidden uppercase text-4xl mt-5 text-white">
                     Watch trailer
                   </h1>
-                  {handleResizeIframe(movie.trailer)}
+                  {handleResizeIframe(movie?.trailer)}
                   <div className="hidden lg:flex mt-3 justify-between">
                     <div className="tomatoesReview flex rounded-lg justify-between p-2 items-center">
                       <div className="w-1/2 flex items-center">
@@ -300,7 +299,7 @@ export default function Detail({ movie }) {
                         <div className="ml-1">
                           <p className="text-white text-sm font-thin">
                             <span className="text-white font-bold">
-                              {movie.danhGia}
+                              {movie?.danhGia}
                             </span>
                             <span className="text-primary">/10⭐️</span>
                           </p>
@@ -348,7 +347,7 @@ export default function Detail({ movie }) {
                         <div className="ml-1 text-left">
                           <p className="text-white text-lg font-thin">
                             <span className="text-white font-bold">
-                              {movie.danhGia}
+                              {movie?.danhGia}
                             </span>
                             <span className="text-primary">/10 ⭐️</span>
                           </p>
@@ -363,7 +362,7 @@ export default function Detail({ movie }) {
                     className="bookNowBtn text-2xl mt-3 w-full lg:mt-2 lg:w-auto lg:inline-block md:hidden"
                     onClick={() => {
                       if (localStorage.getItem("User")) {
-                        return navigate(`/showtime/${movie.maPhim}`);
+                        return navigate(`/showtime/${movie?.maPhim}`);
                       }
                       return message.warning(
                         "Please log in before booking ticket!"

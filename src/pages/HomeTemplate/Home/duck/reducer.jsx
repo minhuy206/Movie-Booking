@@ -102,14 +102,13 @@ const homeReducer = (state = initialState, action) => {
       state.sliders = action.data;
       return { ...state };
     case types.SLIDERS_FAIL:
+    case types.MOVIES_FAIL:
       state.error = action.error;
       return { ...state };
     case types.MOVIES_SUCCESS:
       state.movies = action.data;
       return { ...state };
-    case types.MOVIES_FAIL:
-      state.error = action.error;
-      return { ...state };
+
     default:
       return { ...state };
   }

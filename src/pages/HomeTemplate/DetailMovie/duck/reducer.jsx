@@ -1,20 +1,7 @@
 import * as types from "./types";
 
 const initialState = {
-  movie: {
-    maPhim: 0,
-    tenPhim: "",
-    biDanh: "",
-    dangChieu: false,
-    danhGia: 0,
-    hinhAnh: "",
-    hot: true,
-    maNhom: "GP06",
-    moTa: "",
-    ngayKhoiChieu: "",
-    sapChieu: true,
-    trailer: "",
-  },
+  movie: null,
   error: null,
 };
 

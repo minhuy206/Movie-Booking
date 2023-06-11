@@ -117,7 +117,7 @@ export default function LoginModal({ open, setIsOpen, setIsLogin }) {
                             type="text"
                             required
                             className="block relative z-50 w-full appearance-none rounded-none rounded-t-md border border-#7f66de px-3 py-2 text-#7f66de placeholder-#7f66de focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Username"
+                            placeholder="Username: minhuy206"
                           />
                         </div>
                         <div>
@@ -131,7 +131,7 @@ export default function LoginModal({ open, setIsOpen, setIsLogin }) {
                             type="password"
                             required
                             className="block w-full relative z-50 appearance-none rounded-none rounded-b-md border border-#7f66de px-3 py-2 text-#7f66de placeholder-#7f66de focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Password"
+                            placeholder="Password: 12345678"
                           />
                         </div>
                       </div>
