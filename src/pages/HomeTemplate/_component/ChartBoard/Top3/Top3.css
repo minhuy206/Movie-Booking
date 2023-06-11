@@ -13,30 +13,6 @@
 .top3Overplay {
   background-color: #1d1d1d80;
   transition: all 0.5s ease-in-out;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.top1Item {
-  width: 39%;
-  overflow: hidden;
-  position: relative;
-}
-
-.top23ItemContainer {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.top2Item,
-.top3Item {
-  height: 49%;
-  overflow: hidden;
-  position: relative;
 }
 
 .top1Item:hover .top3Overplay {
@@ -128,17 +104,8 @@
 }
 
 .hoverOverplay {
-  opacity: 0;
   background-color: #70707080;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   transition: all 0.5s ease-in-out;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .top1Item:hover .hoverOverplay {

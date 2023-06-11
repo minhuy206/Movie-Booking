@@ -24,13 +24,13 @@ export const Top3 = ({ top5Movies }) => {
 
   return (
     <div className="top-3">
-      <div className="top3Title">
-        <h1 className="uppercase text-white text-4xl mb-5">
+      <div>
+        <h1 className="uppercase text-white text-4xl mb-5 ">
           Top Movies this week
         </h1>
       </div>
-      <div className="top3Content md:flex justify-between h-full hidden">
-        <div className="hidden rounded-2xl lg:block md:block top1Item">
+      <div className="top3Content md:flex justify-between h-full hidden gap-2">
+        <div className="top1Item hidden rounded-2xl lg:block md:block w-2/5 overflow-hidden relative">
           <img
             src={top5Movies[0]?.hinhAnh}
             alt={top5Movies[0]?.tenPhim}
@@ -43,7 +43,7 @@ export const Top3 = ({ top5Movies }) => {
             <span className="text-primary text-xs">/10</span>
             <span>⭐️</span>
           </div>
-          <div className="p-5 top3Overplay h-5/12">
+          <div className="top3Overplay p-5 absolute h-5/12 w-full bottom-0 left-0">
             <h2 className="text-white relative top1 text-5xl xl:text-6xl inline-block">
               01
             </h2>
@@ -64,8 +64,8 @@ export const Top3 = ({ top5Movies }) => {
           </div>
           <TrailerModal open={open} trailer={trailer} setIsOpen={setIsOpen} />
         </div>
-        <div className="top23ItemContainer">
-          <div className="rounded-2xl top2Item">
+        <div className="top23ItemContainer flex-1 flex flex-col gap-2">
+          <div className="rounded-2xl top2Item overflow-hidden relative h-1/2">
             <img
               src={top5Movies[1]?.hinhAnh}
               alt={top5Movies[1]?.tenPhim}
@@ -78,7 +78,7 @@ export const Top3 = ({ top5Movies }) => {
               <span className="text-primary text-xs">/10</span>
               <span>⭐️</span>
             </div>
-            <div className="top3Overplay h-1/3 p-5 flex items-center">
+            <div className="top3Overplay h-1/3 p-5 flex items-center absolute w-full bottom-0 left-0">
               <h2 className="text-white relative text-4xl xl:text-5xl inline-block top2 mr-5">
                 02
               </h2>
@@ -109,7 +109,7 @@ export const Top3 = ({ top5Movies }) => {
               setIsOpen={setIsOpen1}
             />
           </div>
-          <div className="rounded-2xl top3Item">
+          <div className="rounded-2xl top3Item overflow-hidden relative h-1/2">
             <img
               src={top5Movies[2]?.hinhAnh}
               alt={top5Movies[2]?.tenPhim}
@@ -122,7 +122,7 @@ export const Top3 = ({ top5Movies }) => {
               <span className="text-primary text-xs">/10</span>
               <span>⭐️</span>
             </div>
-            <div className="top3Overplay h-1/3 p-5 flex items-center">
+            <div className="top3Overplay h-1/3 p-5 flex items-center absolute w-full bottom-0 left-0">
               <h2 className="text-white relative text-4xl xl:text-5xl inline-block top3 mr-5">
                 03
               </h2>
@@ -130,7 +130,7 @@ export const Top3 = ({ top5Movies }) => {
                 {top5Movies[2]?.tenPhim}
               </h2>
             </div>
-            <div className="hoverOverplay">
+            <div className="hoverOverplay opacity-0 absolute top-0 left-0 w-full h-full flex justify-center items-center">
               <FontAwesomeIcon
                 icon={faCirclePlay}
                 size="6x"

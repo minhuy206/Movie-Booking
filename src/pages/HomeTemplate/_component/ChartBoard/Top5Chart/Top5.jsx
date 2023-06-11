@@ -5,17 +5,13 @@ export const Top5 = ({ top5Movies }) => {
   const navigate = useNavigate();
   const handleResponsive = (movie) => {
     const { innerWidth: width } = window;
-    if (width > 1023) {
+    if (width > 1023 || (width > 540 && width <= 768)) {
       return movie.tenPhim.length > 20
         ? movie.tenPhim.substring(0, 20) + "..."
         : movie.tenPhim;
     } else if (width > 768) {
       return movie.tenPhim.length > 35
         ? movie.tenPhim.substring(0, 35) + "..."
-        : movie.tenPhim;
-    } else if (width > 540) {
-      return movie.tenPhim.length > 20
-        ? movie.tenPhim.substring(0, 20) + "..."
         : movie.tenPhim;
     }
     return movie.tenPhim.length > 15
@@ -39,7 +35,7 @@ export const Top5 = ({ top5Movies }) => {
         {top5Movies.map((movie, index) => (
           <div
             key={index}
-            className="top5Item rounded-lg p-2"
+            className="top5Item rounded-lg p-2 flex w-full justify-between items-center"
             onClick={() => {
               navigate(`detail/${movie.maPhim}`);
             }}

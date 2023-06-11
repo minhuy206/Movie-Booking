@@ -7,7 +7,7 @@ export const Chart = ({ top5Movies }) => {
   return (
     <section className="chart pt-10 lg:pt-28">
       <div className="m-auto sm:w-5/6 w-11/12">
-        <div className="flex justify-between">
+        <div className="flex gap-3">
           <div className="chartLeft lg:block hidden">
             <Top3 top5Movies={top5Movies} />
           </div>

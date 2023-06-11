@@ -21,10 +21,6 @@
   );
   transition: all ease-in-out 0.3s;
   height: 19%;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
   padding-left: 0;
 }
 

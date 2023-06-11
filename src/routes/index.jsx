@@ -56,24 +56,6 @@ const routes = [
           return import("../pages/HomeTemplate/TicketRoom/TicketRoom");
         }),
       },
-      {
-        path: "profile",
-        element: lazy(() => {
-          return import("../pages/HomeTemplate/BookingHistory/BookingHistory");
-        }),
-      },
-      //     {
-      //       path: "movies/edit/:id",
-      //       element: lazy(() => {
-      //         return import("../pages/AdminTemplate/movies-management/edit");
-      //       }),
-      //     },
-      //     {
-      //       path: "movies/showtime/:id",
-      //       element: lazy(() => {
-      //         return import("../pages/AdminTemplate/movies-management/showtime");
-      //       }),
-      //     },
     ],
   },
   {
